@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04页面显示时间</title>
+	<script>
+	window.onload = function(){
+		var time = document.getElementById('time');
+
+		/*
+			xx年xx月xx日
+				* 添加时分秒
+				* 补0
+		 */
+
+		 function showTime(){
+			var now = new Date();//
+
+
+			 // Date时间方法
+			 // 获取年份
+			 var year = now.getFullYear();
+
+			 // 获取月份
+			 var month = now.getMonth()+1;//0-11
+
+			 // 获取日
+			 var date = now.getDate();
+
+
+			 // 时
+			 var hour = now.getHours();
+
+			 // 分
+			 var min = now.getMinutes();
+
+			 // 秒
+			 var sec = now.getSeconds();
+
+			 // document.write(year + '年' + month + '月' + date + '日' + ' ' + hour + ':' + min + ':' + sec);
+			 time.innerHTML = year + '年' + month + '月' + date + '日' + ' ' + hour + ':' + min + ':' + sec;
+		}
+
+		// 页面加载调用一次
+		showTime();
+
+
+		// 走动的时间
+		// 每隔1s写入一次时间
+		setInterval(showTime,1000);
+	}
+	</script>
+</head>
+<body>
+	<div id="time"></div>
+</body>
+</html>

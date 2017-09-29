@@ -1,0 +1,1 @@
+showMsg({name:'laoxie',age:18});

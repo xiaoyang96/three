@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12事件捕获</title>
+	<style>
+		#box{padding:20px;width:200px;height:200px;background-color: #f00;}
+		#box div{width:100px;height:100px;background-color: #fc0;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			/*
+				事件捕获
+					* 标准浏览器
+					* ie8-不支持事件捕获
+					* 事件监听：addEventListener(type,fn,capture)
+						* capture：是否在捕获阶段执行fn，默认值false
+			 */
+			var box = document.getElementById('box');
+			var child = box.children[0];
+
+
+			// 同名事件会被覆盖
+			box.onclick = function(){
+				console.log('box click');
+			}
+			// box.onclick = function(){
+			// 	console.log('你的益达');
+			// }
+
+			// 事件监听
+			box.addEventListener('click',function(e){
+				console.log('你的益达');
+
+				// 阻止事件传播
+				e.stopPropagation();
+			},true);
+
+			child.onclick = function(){
+				console.log('child click');
+			}
+
+			document.onclick = function(){
+				console.log('document click');
+			}
+
+
+			// 封装函数的使用
+			addEvent(box,'click',function(e){
+				console.log('封装函数的使用');
+			},true);
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div></div>
+	</div>
+</body>
+</html>

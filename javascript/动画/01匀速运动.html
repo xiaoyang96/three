@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01匀速运动</title>
+	<style>
+		.box{position:absolute;top:0;left:0;width:100px;height:100px;background-color: #f00;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			var box = document.querySelector('.box');
+
+			/*
+				匀速运动：
+			 */
+			
+			// 每隔一定时间改变一次left属性
+			var speed = 5;
+
+			var timer = setInterval(()=>{
+				// 先获取原来的left值
+				// var left = box.style.left;
+				/*var left = getComputedStyle(box).left;//带单位的值10px
+
+				// 提取单位
+				var reg = /[a-z]+$/;
+				var unit = left.match(reg);
+				unit = unit ? unit[0] : '';
+
+				// 提取值
+				left = parseInt(left);*/
+
+				var left = box.offsetLeft;
+
+				left += speed;
+
+				if(left >= window.innerWidth - box.offsetWidth){
+					left = window.innerWidth - box.offsetWidth;
+					clearInterval(timer);
+				}
+
+				box.style.left = left + 'px';
+			},20);
+		})
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

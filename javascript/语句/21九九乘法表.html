@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>21九九乘法表</title>
+	<style>
+		#output span{display:inline-block;margin:5px;padding:5px 10px;width:80px;background-color:rgba(0,0,0,.1);box-sizing:border-box;}
+		#output span:hover{background-color:#fc0;color:#fff;}
+	</style>
+	
+</head>
+<body>
+	<h1>九九乘法表</h1>
+	<div id="output"></div>
+	<script>
+		/*
+			九九乘法表
+		 */
+		
+		var output = document.getElementById('output');
+		var str = '';
+
+		// 外层循环控制行
+		for(var i=1;i<=9;i++){
+			// 内层循环控制列
+			for(var j=1;j<=i;j++){
+				// document.write('<span>' + i + '&times;' + j + '=' + i*j +'</span>');
+				str += '<span>' + i + '&times;' + j + '=' + i*j +'</span>'
+			}
+			// document.write('<br>');
+			str += '<br>';
+		}
+
+		// 循环完成后，写入#output
+		output.innerHTML = str;
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装获取某个范围内随机数的方法</title>
+	<script src="../common.js"></script>
+	<script>
+		/*
+			封装获取某个范围内随机数的方法
+				* 单一原则
+				* 灵活性（利用函数参数）
+		 */
+		
+		/*// 获取100-200范围内随机数,0-10,10-50
+		function randomNumber(min,max){//100.999999
+			// parseInt(Math.random()*101)+100
+			// parseInt(Math.random()*11)+0
+			// parseInt(Math.random()*41)+10
+
+			// 公式：
+			return parseInt(Math.random()*(max-min+1))+min
+		}*/
+
+		// 验证
+		for(var i=0;i<1000;i++){
+			console.log(randomNumber(100,200));
+		}
+
+		
+		/*// 获取1-100范围内随机数
+		function randomNum(){
+			var res = parseInt(Math.random()*100)+1;
+			return res;
+		}
+
+		// A
+		var a = document.getElementById('a');
+		a.innerHTML = randomNum();
+
+		// B
+		var b = document.getElementById('b');
+		b.innerHTML = randomNum();*/
+	</script>
+</head>
+<body>
+	A：
+	<span id="a"></span>
+
+	B:
+	<span id="b"></span>
+</body>
+</html>

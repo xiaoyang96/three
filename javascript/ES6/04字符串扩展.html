@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04字符串扩展</title>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+
+			var str = 'good good study';
+			var has = str.indexOf('good') >=0;
+			// ES6:includes()
+
+
+			// 字符串模板(重点)
+			var goodslist = [
+				{title:'商品1',price:880,qty:2},
+				{title:'商品2',price:2998,qty:3},
+				{title:'商品3',price:1998,qty:10}
+			];
+
+			let datalist = document.querySelector('.datalist');
+
+			let ul = document.createElement('ul');
+			ul.innerHTML = goodslist.map(function(item){
+				// return '<li><h4>'+item.title+'</h4><p class="price">价格：<span>'+item.price+'</span></p><p>数量：'+item.qty+'</p></li>';
+				
+				return `<li>
+							<h4>${item.title}</h4>
+							<p class="price">价格：<span>${item.price}</span></p>
+							<p>数量：${item.qty}</p>
+						</li>`;
+			}).join('');
+
+			datalist.appendChild(ul);
+		})
+
+
+	</script>
+</head>
+<body>
+	<div class="datalist">
+		
+	</div>
+</body>
+</html>

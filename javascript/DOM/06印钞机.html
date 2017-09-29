@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06印钞机</title>
+	<style>
+		.rmb img{width:200px;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				已经存在页面上的元素，如果使用appendChild/insertBefore操作
+				则会移动这个元素
+			 */
+			var btn = document.getElementById('btn');
+			var rmb = document.getElementsByClassName('rmb')[0];
+			var nrmb = document.getElementsByClassName('rmb')[1];
+
+			// 点击复制
+			btn.onclick = function(){
+				var newRmb = rmb.cloneNode(true);
+				document.body.appendChild(newRmb);
+			}
+
+			// 移动现有元素
+			nrmb.onclick = function(){
+				document.body.appendChild(nrmb);
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<button id="btn">印钞机</button>
+	<div class="rmb">
+		<img src="img/100rmb.jpg">
+	</div>
+	<div class="rmb">
+		<img src="img/rmb100.jpg" alt="">
+	</div>
+</body>
+</html>

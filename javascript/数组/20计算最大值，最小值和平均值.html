@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		/*
+			分别计算出以上数组的最大值，最小值和平均值，并输出他们的索引
+			[10,2,8,55,32,18,9,11,30,16,19,20]
+		 */
+		 var arr = [10,2,8,55,32,18,9,11,30,16,19,20];
+
+		 // 假设最大最小都为第一个
+		 var maxIdx = 0;
+		 var minIdx = 0;
+		 var max = arr[maxIdx];
+		 var min = arr[minIdx];
+
+		 // 遍历数组判断
+		 for(var i=1;i<arr.length;i++){
+		 	// 如果当前值比max还大，更新max和maxIdx
+		 	if(arr[i]>max){
+		 		max = arr[i];
+		 		maxIdx = i;
+		 	}
+
+
+		 	// 如果当前值比min还小，更新min和minIdx
+		 	if(arr[i]<min){
+		 		min = arr[i];
+		 		minIdx = i;
+		 	}
+		 }
+
+		 console.log('最大值:' + max + ', 对应索引：' + maxIdx);
+		 console.log('最小值:' + min + ', 对应索引：' + minIdx);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

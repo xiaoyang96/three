@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建一个包含50个三位数的随机数组</title>
+	
+	<script>
+		/*
+			创建一个包含50个三位数的随机数组
+			1）创建一个空数组arr
+			2）循环50次，每次写入一个三位数的随机数
+		 */
+		
+		// 1）创建一个空数组arr
+		var arr = [];
+
+		// 2）循环50次，每次写入一个三位数的随机数
+		for(var i=0;i<50;i++){
+			var randomNum = parseInt(Math.random()*900) + 100;
+
+			/*// 补0操作
+			if(randomNum<10){
+				randomNum = '00' + randomNum;
+			}else if(randomNum<100){
+				randomNum = '0' + randomNum;
+				// randomNum = randomNum + '0';
+			}*/
+
+
+			arr[i] = randomNum;
+		}
+
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

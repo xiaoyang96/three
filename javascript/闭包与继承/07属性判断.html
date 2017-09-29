@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07属性判断</title>
+	<script>
+		
+	/*
+		* for…in：遍历对象中的所有可枚举属性, 无论该属性存在于实例中还是原型中
+		* in：只要通过对象能够访问到属性就返回true, 无论该属性存在于实例中还是原型中
+			if(name in s1){
+
+			}
+		* 对象.hasOwnProperty(属性)：检测一个属性是存在于对象本身中
+			返回true，说明属性存在对象中
+			返回false，说明属性不存在或在原型中
+			检测一个属性是否存在于原型中：!obj.hasOwnProperty(name) && (name in o
+	 */
+
+	 var arr = [10,20];
+
+	 if(length in arr){
+	 	console.log('arr中有length');
+	 }
+
+	 if('forEach' in arr){
+	 	console.log('arr中有forEach');
+	 }
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

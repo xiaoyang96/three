@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03页面加载事件</title>
+	<script>
+		// DOMContentLoaded
+		// 使用事件监听的方式
+		document.addEventListener('DOMContentLoaded',function(){
+			console.log('DOMContentLoaded');
+		});
+
+		window.onload = function(){
+			console.log('window onload');
+		}
+
+		// onreadystatechange
+		document.onreadystatechange = function(){
+			console.log(document.readyState);
+
+			if(document.readyState=== 'interactive'){
+
+				var box = document.querySelector('.box');
+				console.log(box)
+			}
+		}
+
+
+
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

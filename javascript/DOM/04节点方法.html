@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04节点方法</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		h1{text-align:center;}
+		.datalist{width:800px;margin:50px auto;}
+		.datalist img{width:120px;}
+		.datalist li{padding-bottom:10px;margin-bottom:10px;border-bottom:1px dotted #ddd;}
+		.price span{color:#f00;}
+		.price span::before{
+			content: '￥'
+		}
+	</style>
+
+	<script>
+		window.onload = function(){
+			/*
+				* 创建
+					* 创建元素节点
+						document.createElement() 
+				* 插入
+					* 父元素.appendChild()
+			 */
+			var arr = [
+				{
+					name:'苹果iphone7 plus',
+					price:4998,
+					color:'土豪金',
+					memory:64,
+					imgurl:'img/ip7.jpg'
+				},
+				{
+					name:'sansumg爆炸7',
+					price:998,
+					color:'白色',
+					memory:32,
+					imgurl:'img/note7.jpg'
+				},
+				{
+					name:'荣耀7',
+					price:1999,
+					color:'白色',
+					memory:16,
+					imgurl:'img/honor7.jpg'
+				}
+			];
+
+			var datalist = document.getElementsByClassName('datalist')[0];
+
+			// 创建一个元素节点
+			// 这个节点只在内存中
+			var ul = document.createElement('ul');
+
+			arr.forEach(function(item){
+				// 为每个商品创建一个li
+				var li = document.createElement('li');
+
+				// 创建a标签
+				var link = document.createElement('a');
+				// 图片
+				var img = document.createElement('img');
+				img.src=item.imgurl;
+				link.appendChild(img);
+				
+
+				// 标题
+				var title = document.createElement('h4');
+				title.innerHTML = item.name;
+				// 创建文本节点
+				// var txt = document.createTextNode(item.name);
+				// title.appendChild(txt);
+				
+
+
+				// 价格
+				var price = document.createElement("p");
+				price.className = 'price';
+				price.innerHTML = '价格：<span>'+item.price+'</span>';
+
+				// 写入li
+				li.appendChild(link);
+				li.appendChild(price);
+				li.appendChild(title);
+
+				ul.appendChild(li);
+			});
+
+			datalist.appendChild(ul);
+
+			// 创建页面标题
+			var pageTitle = document.createElement('h1');
+			pageTitle.innerHTML = '热门手机排行榜';
+
+			// 获取body元素
+			// document.getElementsByTagName('body')[0]
+			// document.body.appendChild(pageTitle);
+
+			document.body.insertBefore(pageTitle,datalist);
+		}
+	</script>
+</head>
+<body>
+	<!-- <h1>热门手机排行榜</h1> -->
+	<div class="datalist">
+		
+	</div>
+</body>
+</html>

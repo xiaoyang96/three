@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12盒模型相关属性</title>
+	<style>
+		body{margin:0;position:relative;}
+		.box{position:absolute;top:0;left:100px;width:100px;height:100px;padding:20px;border:5px solid #ddd;background-color: #ffc;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				* offsetTop: 当前元素离<定位父级>元素顶部的距离。
+				* offsetLeft: 当前元素离<定位父级>元素左边的距离。
+					以上两个属性如果没定位的父级，则相对于根元素html的距离
+				* offsetWidth: 当前元素的宽度（border + padding + content）
+				* offsetHeight: 当前元素的高度（border + padding + content）
+			 */
+			var box = document.getElementsByClassName('box')[0];
+
+			// var width = getComputedStyle(box).width;console.log(width)
+			var oWidth = box.offsetWidth;console.log(oWidth)
+
+			var oLeft = box.offsetLeft;console.log('offsetLeft:',oLeft)
+
+			// 让元素动起来
+			var timer = setInterval(function(){
+				var left = box.offsetLeft;
+
+				left += 3;
+
+				if(left >= window.innerWidth-box.offsetWidth){
+					clearInterval(timer);
+					left = window.innerWidth-box.offsetWidth
+				}
+				box.style.left = left + 'px';
+			},20)
+
+		}
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

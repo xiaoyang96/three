@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+   <script type="text/javascript">
+    // var result=document.getElementById('result');
+    // console.log(result);
+    // 问题1：为何放入盒子里放不进，不显示。获取元素失败；
+    // 原因：获取时获取不到，应放盒子后面。
+    var total=15;
+    var num=0;
+    while(total<50){
+        total=total+5;
+        num++;
+    }
+   document.write("答案：小和尚要挑"+num+"次水才能装满水" +"<br>");
+    </script>
+</head>
+<body>
+    <pre>
+        山上有一口缸可以装50升水 ，现在有15升水。
+        老和尚叫小和尚下山挑水，每次可以挑5升。
+        问：小和尚要挑几次水才可以把水缸挑满？通过编程解决这个问题。
+        total=50;
+        now=15;
+        now=now+5;
+    </pre>
+    <div id="result"></div>
+     
+</body>
+</html>

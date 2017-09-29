@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05封装方法的使用</title>
+	<script src="../common.js"></script>
+	
+</head>
+<body>
+	<button>删除</button>
+	<script>
+		var now = new Date()
+		now.setDate(now.getDate() + 7);
+		Cookie.set('name','laoxie',now);
+
+		var btn = document.getElementsByTagName('button')[0];
+
+		btn.onclick = function(){
+			Cookie.remove('name');
+		}
+	</script>
+</body>
+</html>

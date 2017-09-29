@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03练习描述一个对象</title>
+	<script>
+		/*
+			描述一个人
+				* Ta有什么
+				* Ta能做什么
+		 */
+
+		 var girl = {
+		 	// 属性
+		 	name:'美女',
+		 	height:165,
+		 	gender:'女',
+
+		 	// 能做什么
+		 	walk:function(){},
+		 	say:function(){},
+		 	coding:function(){}
+		 }
+
+		 var man = new Object();
+
+		 // 属性
+		 man.name = '小王';
+		 man.gender = '男';
+		 man.age = 16;
+
+		 // 方法
+		 man.sing = function(){}
+		 man.dance = function(){}
+
+		 // 讲笑话
+		 man.jxh = function(){}
+
+
+		 /*
+		 	描述购物车
+		 	把购物车当作对象
+		  */
+
+		 var shoppingCart = {
+		 	// 属性
+		 	title:'购物车',
+		 	goods:[{
+		 		id:'g01',
+		 		name:'apple 7 plus',
+		 		price:4998,
+		 		qty:1
+		 	},{}],
+
+
+		 	// 方法
+		 	init:function(){},
+		 	sum:function(){},
+		 	remove:function(id){},
+		 	changeQty:function(id){},
+		 	buy:function(){}
+		 }
+
+		 shoppingCart.init();
+
+
+		 /*
+		 	QQ聊天窗口
+		  */
+		 var qqchat = {
+		 	title:'lemon',
+		 	msglist:[{
+		 		content:'xxx',
+		 		time:'2017-8-14 09:45:55',
+		 		sender:'xxx'
+		 	}],
+		 	ad:[],
+		 	tools:[],
+
+		 	init:function(){},
+		 	send:function(){},
+		 	close:function(){},
+		 	min:function(){},
+		 	max:function(){},
+		 	getHistory:function(){}
+		 }
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

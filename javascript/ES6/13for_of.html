@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13for_of</title>
+	<script>
+		document.addEventListener("DOMContentLoaded",function(){
+
+			/*
+				* for..in
+				* for
+				* forEach(item=>{})
+				* for..of
+			 */
+			
+			var myMap = new Map();
+
+			// 添加
+			myMap.set('name','laoxie');
+			myMap.set(18,'age');
+			myMap.set(document.body,'body元素');
+
+			console.log(myMap);
+
+			// 遍历
+			// for(var attr of myMap){
+			// 	// attr得到一个数组
+			// 	console.log(attr)
+			// }
+
+			// 利用解构实现获取map中的值
+			// var [key,val] = attr
+			for(let [key,val] of myMap){
+				console.log(key,val)
+			}
+
+			// console.log('for of end:',key,val);
+
+
+			var mySet = new Set();
+			mySet.add(10);
+			mySet.add(20);
+			mySet.add(3);
+			mySet.add(10);
+			mySet.add(3);
+			mySet.add(10);
+
+			console.log(mySet);
+
+			for(var attr of mySet){
+				console.log(attr);
+				if(attr == 20){
+					break;
+				}
+			}
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body> 
+<!-- 开发一款软件，根据公式（身高-108）*2=体重，可以有10斤左右的浮动。来观察测试者体重是否合适 -->
+身高：<input type="text"  id="ht" /> 
+体重：<input type="text"  id="wt"/>
+<button onclick="test()">测试</button>
+
+<div id="jg"></div>
+<script type="text/javascript">
+    // 获取框元素
+    var ht=document.getElementById('ht');
+    var wt=document.getElementById('wt');
+    var jg=document.getElementById('jg');
+    function test(){
+        // 获取输入的身高及体重
+        var _ht=Number(ht.value);
+        var _wt=Number(wt.value);
+        // 通过（身高-108）*2的公式得到标准的体重结果；
+        var result=(_ht-108)*2;
+        // 将标准的体重结果与输入的体重数进行判断；
+        if(result+5<_wt){
+            jg.innerHTML='太胖了，该减肥了';
+        }else if(result-5>_wt){
+            jg.innerHTML='太瘦了，多吃点肉了';
+        }else if(_wt>result-5||_wt<result+5){
+            jg.innerHTML='身材完美';
+        }else{
+            jg.innerHTML='请输入正确的值';
+        }
+        // 注意：1、检查单词是否上下一致；
+        // 2、不可有%号；不可有有区间条件，如2<n<10;需要分开写成逻辑；
+            // 3不可有其他多余花括号，逗号；等
+            // <!--问题：onclick没有() -->
+    } 
+    
+
+</script>
+</body>
+</html>

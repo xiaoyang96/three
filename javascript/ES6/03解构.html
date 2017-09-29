@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03解构</title>
+	<script>
+		// var a = 10;
+		// var b = 20;
+		// var c = 30;
+
+		// 数组解构
+		var [a,b,c] = [10,20,30];
+		console.log(a,b,c)
+
+
+		// 对象解构
+		// 声明的是：name,age,sex
+		var {name,age,gender:sex} = {name:'laoxie',age:18,gender:'男'};
+		console.log(name,age,sex);
+
+
+		// 设置默认值
+		var {name2,age2,gender2='男'} = {name2:'lemon',age2:25,gender2:'female'};
+		console.log(name2,age2,gender2)
+
+
+		// 解构用途
+		
+		// 1.交换变量
+		var x = 10;
+		var y = 20;
+		/*var temp = x;
+		x = y;
+		y = temp;*/
+		let [x,y] = [y,x];
+
+
+		// 2.传参
+		function setCookie({name,val,expires=new Date().toUTCString,path}){
+
+		}
+
+		// setCookie('datalist','1234',now,'');
+		setCookie({name:'datalist',path:'/',val:'1234'});
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

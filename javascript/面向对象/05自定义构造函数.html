@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05自定义构造函数</title>
+	<script>
+		/*
+			自定义构造函数
+				* 构造函数
+				* 实例
+				* 原型对象
+					* constructor
+		 */
+		
+		// 自定义构造函数
+		function Student(name, age){
+			/*
+				使用new调用构造函数时，经历以下4步：
+					1、创建一个Object对象
+					2、将构造函数的this指向这个对象
+					3、执行构造函数中的代码
+					4、返回Object对象
+			 */
+			// var obj = {}
+		    this.name = name;
+		    this.age = age;
+		    this.sayName = function(){alert(this.name);};
+
+		    // return obj
+		}
+
+		// 通过<构造函数的prototye属性>得到<原型对象>
+		Student.prototype
+
+		// 调用自定义构造函数
+		// 实例
+		var s1 = new Student("王铁锤", 18);
+		var s2 = new Student("王大锤", 38);
+
+		console.log(s1);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

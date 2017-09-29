@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>全选与反选</title>
+</head>
+<body>
+    <div id="box">
+        <div class="title">
+            <div>爱好</div>
+            <label><input type="checkbox" id="all" /><strong>全选</strong></label> <label><input type="checkbox" id="reverse" /><strong>反选</strong></label>
+        </div>
+        <div class="main"></div>
+    </div>
+
+    <script type="text/javascript">
+         //创建用于动态生成的数据数组
+         var arr = ['篮球','足球','羽毛球','爬山','游泳','购物','看电影','旅游','音乐','画画','唱歌'];
+         //获取外层元素并设置居中样式
+         var box = document.getElementById('box');
+         box.style.width = '120px';
+         box.style.marginLeft = 'auto';
+         box.style.marginRight = 'auto';
+         //获取用于动态生成复选框等的父元素
+         var main = document.getElementsByClassName('main')[0];
+         //用遍历动态生成复选框等并添加到其父元素中
+         arr.forEach(function(item){
+            var label = document.createElement('label');
+            label.style.display = 'block';
+            main.appendChild(label);
+            var input = document.createElement('input');
+            input.className = 'check';//给复选框添加类名
+            input.type = 'checkbox';
+            input.style.marginRight = '40px';
+            label.appendChild(input);
+            var text = document.createTextNode(item);
+            label.appendChild(text);
+         });
+         //获取全选和反选按钮
+         var allBtn = document.getElementById('all');
+         var reverseBtn = document.getElementById('reverse');
+         //获取动态生成的所有复选框
+         var checks = document.getElementsByClassName('check');//类数组对象
+         //将类数组对象转化为真正的数组，便于用数组的遍历方法
+         checks = Array.prototype.slice.call(checks);//this  checks.slice();
+
+         //实现全选功能
+         allBtn.onclick = function(){
+            // console.log(this.checked);
+            // console.log(checks.forEach)
+            if(this.checked){
+                checks.forEach(function(item){
+                    item.checked = true;
+                });
+            }else{
+                checks.forEach(function(item){
+                    item.checked = false;
+                });
+            }
+         }
+         //完善全选功能
+         function confirmAllChecked(){
+            if(checks.every(function(item){
+               return item.checked;
+            })){
+                allBtn.checked = true;
+            }else{
+                 allBtn.checked = false;
+            }
+         }
+         checks.forEach(function(item){
+            item.onclick = function(){
+               confirmAllChecked();
+            }
+         });
+         //实现反选功能
+         reverseBtn.onclick = function(){
+            checks.forEach(function(item){
+                if(item.checked){
+                    item.checked = false;
+                }else{
+                    item.checked = true;
+                }
+            });
+            //完善反选功能
+            confirmAllChecked();
+         }
+    </script>
+</body>
+</html>

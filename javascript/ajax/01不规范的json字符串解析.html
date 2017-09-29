@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01不规范的json字符串解析</title>
+	<script>
+		var data = '{name:"laoxie","age":19}';
+
+		// var res = JSON.parse(data);
+		var res = eval('(' + data + ')');
+		
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

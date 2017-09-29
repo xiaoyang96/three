@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04ES5数组归并方法</title>
+	<script>
+		/*
+			* reduce()
+			* reduceRight()
+		 */
+		var arr = [10,11,23,4,44,22];
+
+		var sum = 0;
+		for(var i=0;i<arr.length;i++){
+			sum += arr[i];
+		}
+		console.log(sum);
+
+		console.log(arr);
+		var res = arr.reduce(function(prev,cur){
+			// console.log(666);
+			console.log(prev,cur);
+			return prev+cur;
+		},0);
+
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

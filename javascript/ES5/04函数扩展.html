@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04函数扩展</title>
+	<script>
+		/*
+			函数扩展
+				* 函数.bind(对象): 用于将当前函数和指定对象绑定，返回一个新的函数
+					* 改变函数中的this指向
+		 */
+		// 自动称为window的属性
+		var title = 'window的标题';
+
+		// 函数声明自定称为window下的方法
+		function showMsg(){
+			console.log(this.title);
+		}
+
+		showMsg();//window的标题
+
+		var obj = {
+			title:'对象标题',
+			show:function(){
+				console.log(this.title);
+			},
+			myShow: showMsg.bind(window)
+		}
+
+		obj.show();//对象标题
+		obj.myShow();//对象标题
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

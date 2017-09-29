@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02数组的读取与遍历</title>
+	<script>
+		// 字面量方式创建一个数组
+		var arr = [10,20,30];
+
+		// 通过索引值获取数组中的数据
+		// 索引：0~arr.length-1
+		// 不存在的索引对应的值：undefined
+
+		console.log(arr[0]);//10
+		console.log(arr[3]);//undefined
+
+		// 数组的遍历（循环）
+		// for
+		console.log(arr);
+		for(var i=0;i<arr.length;i++){
+			// console.log('索引'+i+arr[i]);
+			console.log('索引',i,': ',arr[i]);
+		}
+
+		// console.log(i);//3
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

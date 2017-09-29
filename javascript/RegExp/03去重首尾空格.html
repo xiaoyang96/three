@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03去重首尾空格</title>
+    <script>
+       window.onload = function(){
+        /*
+            知识点：
+                * replace()
+                * 锚点
+                    * ^开始
+                    * $结束
+                * 或 |
+         */
+            var username = document.getElementById('username');
+            var btn = username.nextElementSibling;
+
+            // 去重首尾空格
+            btn.onclick = function(){
+                var _username = username.value;
+
+                // if(_username.trim){
+                //     _username = _username.trim();
+                // }else{
+                    // _username = _username.replace(/^\s{1,}|\s{1,}$/g,'');
+                    _username = _username.replace(/^\s+|\s+$/g,'');
+                // }
+
+                console.log(_username);
+                console.log(_username.length);
+
+            }
+       }
+    </script>
+</head>
+<body>
+    <input type="text" id="username">
+    <button>登录</button>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>19找出所有水仙花</title>
+	<script>
+		/*
+			找出所有水仙花
+			* 三位数
+			* 各位立方和等于该数本身
+		 */
+		
+		for(var i=100;i<=999;i++){
+			//168
+			// 得到个位数
+			var g = i%10;
+
+			// 得到十位数
+			var s = parseInt(i%100/10);
+
+			// 得到百位
+			var b = parseInt(i/100);
+
+			if(i === b*b*b + s*s*s + g*g*g){
+				console.log(i);
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

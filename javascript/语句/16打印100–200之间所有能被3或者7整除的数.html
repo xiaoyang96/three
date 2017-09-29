@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打印100–200之间所有能被3或者7整除的数</title>
+	<script>
+		/*
+			打印100–200之间所有能被3或者7整除的数
+		 */
+		for(var num=100;num<=200;num++){
+			if(num%3===0 || num%7===0){
+				document.write(num + ', ');
+			}
+		}
+
+		// 打印1-100内的偶数
+		document.write('<h4>打印1-100内的偶数</h4>');
+		for(var num=1;num<=100;num++){
+			if(num%2==0){
+				document.write(num + ', ')
+			}
+		}
+
+		document.write('<h4>num+=2</h4>');
+		for(var num=2;num<=100;num+=2){
+			document.write(num + ', ');
+		}
+
+		// 循环完成后i的值为多少
+		for(var i=0;i<10;i++){
+			console.log(i);
+
+			// i++
+		}
+		console.log('end:',i);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

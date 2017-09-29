@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07事件冒泡</title>
+	<style>
+		.container ul{overflow:hidden;}
+		.container li{float:left;width:100px;height:100px;margin:10px;background-color: #f00;}
+	</style>
+	<script>
+	/*
+		事件传播
+			* 冒泡：从下往上
+	 */
+		window.onload = function(){
+			var container = document.getElementsByClassName('container')[0];
+			var ul = container.children[0];
+			var lis = ul.children;
+
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick = function(){
+					console.log(this.innerText);
+				}
+			}
+
+			// 给ul绑定点击事件
+			ul.onclick = function(){
+				console.log('ul click');
+			}
+
+			document.body.onclick = function(e){
+				e = e || window.event;
+				console.log('body click');
+
+				// 阻止事件传播
+				// 兼容写法
+				if(e.stopPropagation){
+					e.stopPropagation();
+				}else{
+					e.cancelBubble = true;
+				}
+
+			}
+
+			document.onclick = function(){
+				console.log('document click');
+			}
+
+			// 最顶层对象
+			window.onclick = function(){
+				console.log('window click');
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+</body>
+</html>

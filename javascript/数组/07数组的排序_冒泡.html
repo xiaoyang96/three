@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.sub{color:#999;line-height:1;margin:5px 10px;}
+	</style>
+	<script>
+		/*
+			[10,2,8,55,32,18,9,11,30,16,19,20]
+
+			排序算法
+			1、冒泡排序
+				两两进行对比,把最大的排后面
+			2、选择排序
+			3、快速排序
+		 */
+		
+		var arr = [10,2,8,55,32,18,9,11,30,16,19,20];
+
+
+		document.write('<p>排序前：'+arr.join()+'</p>');
+
+		// 冒泡排序
+		// 从小到大
+		var times = 0;
+		for(var j=0;j<arr.length-1;j++){
+			// 优化排序次数:144 => 66次
+			for(var i=0;i<arr.length-j-1;i++){
+				// 两两进行对比
+				if(arr[i] > arr[i+1]){
+					// 互换位置
+					// 创建一个变量用于临时存放数组元素
+					var temp = arr[i+1];//2
+					arr[i+1] = arr[i];
+					arr[i] = temp;
+				}
+				times++;
+				document.write('<p class="sub">' + arr.join() + '</p>');
+			}
+			document.write('<p>第' + times + '次：' + arr.join() + '</p>');
+		}
+		
+		console.log('排列'+ times + '次：',arr);
+
+		// 从大到小排列
+		var arr_reverse = arr.reverse();
+		console.log('从大到小排列: ', arr_reverse.join(' '));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

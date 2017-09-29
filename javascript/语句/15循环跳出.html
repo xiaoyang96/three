@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15打印1-100内的偶数</title>
+	<script>
+		/*
+			循环跳转
+				* break
+				* continue
+		 */
+		for(var num=1;num<=100;num++){
+			// 只打印50之内的偶数
+			if(num>50){
+				break;//退出
+			}
+
+			if(num%2===0){
+				document.write(num + ', ');
+			}
+		}
+
+		// 计算1-5内的偶数和
+		var total = 0;
+		for(var i=0;i<=5;i++){
+			if(i==3){
+				// break;//退出整个循环
+				continue;//跳过本次循环，继续下一次循环
+			}
+			total += i;
+		}
+		console.log(total);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

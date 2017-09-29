@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09骰子</title>
+	<style>
+		.dice{display: flex;justify-content: center;align-items:center;height:200px;background-color: #efefef;}
+		.dice >div {display:flex;margin:10px;padding:10px;width:100px;height:100px;border-radius: 5px;border:2px solid #ddd;background-color: #fff;box-sizing:border-box;}
+		.dice >div > span{width:26px;height:26px;border-radius:50%;background-color:#666;}
+
+		/*一点*/
+		.dot1{justify-content:center;align-items:center;}
+		div.dot1 span{width:40px;height:40px;}
+
+		/*两点*/
+		.dot2{justify-content: space-between;}
+		.dot2 span:last-child{align-self: flex-end;}
+
+		/*三点*/
+		.dot3{
+			/*主轴两端对齐*/
+			justify-content: space-between;
+
+			/*是否换行*/
+			/*flex-wrap:wrap;*/
+
+			/*交叉轴两段对齐*/
+			/*align-content:space-between;*/
+		}
+		.dot3 span:nth-child(2){align-self: center;}
+		.dot3 span:last-child{
+			/*单独设置子项目的对齐方式*/
+			align-self: flex-end;
+		}
+
+		/*四点*/
+		.dot4{
+			flex-wrap:wrap;
+			justify-content: space-between;
+			align-content:space-between;
+		}
+
+		/*五点*/
+		.dot5{
+			flex-wrap:wrap;
+			justify-content: space-between;
+			align-content:space-between;
+		}
+		.dot5 span:nth-child(3){
+			margin:0 25px;
+		}
+
+		/*四点*/
+		.dot6{
+			flex-wrap:wrap;
+			justify-content: space-between;
+			align-content:space-between;
+		}
+		div.dot6 span{width:22px;height:22px;}
+		div.dot6 span:nth-child(1){margin-right:12px;}
+		div.dot6 span:nth-child(3){margin-right:12px;}
+	</style>
+</head>
+<body>
+	<div class="dice">
+		<div class="dot1">
+			<span></span>
+		</div>
+		<div class="dot2">
+			<span></span>
+			<span></span>
+		</div>
+		<div class="dot3">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="dot4">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="dot5">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="dot6">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+</body>
+</html>

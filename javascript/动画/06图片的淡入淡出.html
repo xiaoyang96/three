@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06图片的淡入淡出</title>
+	<style>
+		
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			var girl = document.querySelector('.girl');
+
+			// 默认显示半透明效果
+			girl.style.opacity = 0.5;
+
+			var timer;
+			girl.onmouseover = function(){
+				clearInterval(timer);
+
+				// 设定一个速度
+				var speed = 0.02;
+
+				timer = setInterval(()=>{
+					// 先获取原来的值
+					var opacity = parseFloat(getComputedStyle(girl).opacity);
+
+					opacity += speed;
+
+					if(opacity >= 1){
+						clearInterval(timer);
+						opacity = 1;
+					}
+
+					girl.style.opacity = opacity;
+
+				},20);
+			}
+
+			// 鼠标移开恢复半透明
+
+			girl.onmouseout = ()=>{
+				clearInterval(timer);
+				// 设定一个速度
+				var speed = 0.02;
+
+				timer = setInterval(()=>{
+					// 先获取原来的值
+					var opacity = parseFloat(getComputedStyle(girl).opacity);
+
+					opacity -= speed;
+
+					if(opacity <= 0.5){
+						clearInterval(timer);
+						opacity = 0.5;
+					}
+
+					girl.style.opacity = opacity;
+
+				},20);
+			}
+		})
+	</script>
+</head>
+<body>
+	<img src="img/zb.jpg" class="girl">
+</body>
+</html>

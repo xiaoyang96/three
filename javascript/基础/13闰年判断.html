@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闰年判断</title>
+	<style>
+		.runnian{color:#f90;}
+	</style>
+</head>
+<body>
+	<input type="text" id="year"><button onclick="checkRunNian()">是否闰年</button>
+	<div id="output"></div>
+	<script>
+		/*
+			**代码执行顺序
+
+			判断输入框输入的年份是否为闰年
+				* 能被4整除但不能被100整除
+				* 或者能被400整除的才叫闰年
+
+			* 逻辑判断(得到布尔值)
+				* && 逻辑与
+					* true && true => true
+					* true && false => false
+					* false && false => false
+				* || 逻辑或
+					* true || true => true
+					* true || false => true
+					* false || false => false
+
+			* 用js操作html
+				* innerHTML：用于双标签
+				* value:用于表单
+		 */
+		
+		// 获取输入的年份 <= 输入框 <= document.getElementById('year')
+
+		// 获取元素
+		var year = document.getElementById('year');
+		var output = document.getElementById('output');
+
+		year.value = '给我一个闰年';
+
+		
+		// 函数
+		// 函数声明
+		function checkRunNian(){
+			// 获取输入框的值：年份
+			var _year = year.value;
+
+			console.log(_year);
+
+			// 判断是否闰年
+			// 1900 => true && false => false
+			// 2017 => false && true => false
+			// 2016 => true && true => true
+			// 2000 => true && false => false || true => true
+			if((_year%4===0 && _year%100!==0) || _year%400 === 0){
+				// alert('闰年');
+				output.innerHTML = '<span class="runnian">闰年</span>';
+			}else{
+				// alert('平年');
+				output.innerHTML = '平年';
+			}
+		}
+
+		// 调用
+		// checkRunNian()
+		
+	</script>
+</body>
+</html>

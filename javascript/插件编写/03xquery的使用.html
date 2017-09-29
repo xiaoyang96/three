@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03xquery的使用</title>
+	<script src="lib/xquery.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			new Element('#box').hide().show();
+
+			$('.datalist li').hide();
+
+			setTimeout(function(){
+				$('.datalist li').show().css('color','#f00');
+			},5000);
+
+			$('.datalist h4').on('click',function(){
+				alert(666);
+			});
+
+			console.log($('#box').css('font-size','30px').show());
+		})
+	</script>
+</head>
+<body>
+	<div id="box">#box</div>
+	<div class="datalist">
+		<h4>华语新歌榜Top5</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<div class="datalist">
+		<h4>经典老歌Top5</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+</body>
+</html>

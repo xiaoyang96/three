@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getip</title>
+	<script>
+		/*
+			* ip: /api/get_ip.php(服务端代理)
+			* city: /api/get_city.php?ip=(服务端代理)
+			* weather: http://wthrcdn.etouch.cn/weather_mini?city=北京(CORS)
+		 */
+		var xhr_ip = new XMLHttpRequest();
+		xhr_ip.onload = function(){
+			if(xhr_ip.status === 200 || xhr_ip.status === 304){
+				var ip = xhr_ip.responseText;
+
+				// 根据IP获取城市
+				var xhr_city = new XMLHttpRequest();
+				xhr_city.onload = function(){
+					if(xhr_city.status === 200 || xhr_city.status === 304){
+						var city = xhr_city.responseText;
+
+						// 根据城市获取天气
+						var xhr_weather = new XMLHttpRequest();
+						xhr_weather.onload = function(){
+							if(xhr_weather.status === 200 || xhr_weather.status === 304){
+								var weather = JSON.parse(xhr_weather.responseText);
+								console.log(weather);
+
+							}
+						}
+						xhr_weather.open('get','http://wthrcdn.etouch.cn/weather_mini?city='+city,true);
+						xhr_weather.send();
+
+						// 获取百度地图
+					}
+				}
+				xhr_city.open('get','/api/get_city.php?ip='+ip,true);
+				xhr_city.send(); 
+			}
+		}
+		xhr_ip.open('get','/api/get_ip.php',true);
+		xhr_ip.send();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

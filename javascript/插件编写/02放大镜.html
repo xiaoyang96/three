@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01弹窗插件</title>
+	<link rel="stylesheet" href="lib/lxzoom/css/lxzoom.css">
+	<script src="lib/lxzoom/lxzoom.js"></script>
+	<style>
+		body{padding:100px;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			new LxZoom({width:400,position:'right'}).init();
+		})
+	</script>
+</head>
+<body>
+	<div class="bigPic lxzoom"><img src="car_min.png" data-big="car.jpg"></div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13tab标签切换</title>
+	<style>
+		.tab{border:1px solid #ddd;}
+		.tab header{border-bottom:2px solid #ddd;overflow:hidden;}
+		.tab header span{float:left;padding:0 15px;line-height:30px;border-right:1px solid #ddd;}
+		.tab header span.active{background-color: #fc0;}
+		.tab .content{min-height:100px;padding:15px;}
+	</style>
+	<script>
+		window.onload = function(){
+			// 获取元素
+			var tab = document.getElementsByClassName('tab')[0];
+			var header = tab.children[0];
+			var content = tab.children[1];
+
+			var tabItem = header.children;
+			var contentItem = content.children;
+
+			// 初始化状态
+			// 1.给第一个tab加高亮
+			// 2.隐藏除第一个以外的内容
+			var index = 0;
+			tabItem[index].className = 'active';
+			for(var i=0;i<contentItem.length;i++){
+				if(i != index){
+					contentItem[i].style.display = 'none';
+				}
+
+				// 点击切换
+				// 1.给当前加高亮
+				// 2.切换显示相应内容
+				console.log(i,tabItem[i]);
+				// tabItem[i].setAttribute('idx',i);
+				tabItem[i].idx = i;
+				tabItem[i].onclick = function(){
+					// this
+					// 先隐藏所有，再显示当前
+					// 去除所有高亮，再添加当前高亮
+					// var idx = this.getAttribute('idx');
+					var idx = this.idx;
+
+					for(var i=0;i<tabItem.length;i++){
+						tabItem[i].className = '';
+						contentItem[i].style.display = 'none';
+					}
+
+					tabItem[idx].className = 'active';
+					contentItem[idx].style.display = 'block';
+				}
+			}
+
+			//i:3
+			console.log('end',i);
+
+
+		}
+	</script>
+</head>
+<body>
+	<div class="tab">
+		<header>
+			<span>Tab1</span>
+			<span>Tab2</span>
+			<span>Tab3</span>
+		</header>
+		<div class="content">
+			<div>Content1</div>
+			<div>Content2</div>
+			<div>Content3</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08获取url中的参数</title>
+	<script>
+		/*
+			获取url中的参数
+			https://www.baidu.com/s?name=avery&age=20&sex=male, 取出name, age和sex的值
+
+			* 并生成一个对象
+		 */
+		var str = 'https://www.baidu.com/s?name=avery&age=20&sex=male';
+
+		// 1)先截取?后的字符
+		var idx = str.indexOf('?');
+
+		// 第二个参数不写，表示截取到最后
+		var params = str.slice(idx+1);
+
+		// 以&拆分成数组
+		var arr_params = params.split('&');
+		console.log(arr_params);
+
+		// 创建一个空对象
+		var obj = {};
+
+		// 遍历数组，取出name, age和sex的值
+		arr_params.forEach(function(item){
+			var arr = item.split('=');
+			document.write('<p>' + arr[0] + ': ' + arr[1] + '</p>');
+
+			// 把属性名/值写入对象
+			obj[arr[0]] = arr[1];
+		});
+
+		console.log(obj);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

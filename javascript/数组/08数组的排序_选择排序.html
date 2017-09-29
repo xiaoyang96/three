@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.sub{color:#999;line-height:1;margin:5px 10px;}
+	</style>
+	<script>
+		/*
+			[10,2,8,55,32,18,9,11,30,16,19,20]
+
+			排序算法
+			1、冒泡排序
+				两两进行对比,把最大的排后面
+			2、选择排序
+				逐个把最小的数往前排
+			3、快速排序(46)
+				* 利用递归实现
+				* 获取中间索引对应的值
+				* 创建两个数组left,right
+		 */
+		
+		var arr = [10,2,8,55,32,18,9,11,30,16,19,20];
+
+		for(var i=0;i<arr.length-1;i++){
+			for(var j=i+1;j<arr.length;j++){
+
+				// 比较大小
+				if(arr[i] > arr[j]){
+					// 互换位置
+					var temp = arr[j];
+					arr[j] = arr[i];
+					arr[i] = temp;
+				}
+			}
+		}
+
+		console.log('排序后结果：' + arr.join());
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01window对象</title>
+	<script>
+		/*
+			页面加载事件window.onload
+				* 延迟代码执行
+				* 避免全局环境的污染
+		 */
+		
+		// 全局作用域
+		// 全局变量
+		var className = '广州h5_1704';
+
+
+
+		// 用var声明的全局变量，不能被删除
+		delete window.className;
+
+		console.log(window.className);
+
+		window.onload = function(){
+			// 局部作用域
+			// 局部变量
+			var ourClassName = 'html5 1704';
+
+			var obj = {
+				name:'laoxie',
+				age:18
+			}
+
+			console.log(obj)
+
+			// 删除对象的属性
+			delete obj.age;
+
+
+			console.log(obj);
+
+
+			// 在局部函数声明变量，不添加var关键字
+			// 自动称为全局变量
+			classQty = 31;
+
+
+			// window可以省略
+			// 全局方法：window对象下的方法
+			// alert();
+			// parseInt();isNaN();parseFloat();
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

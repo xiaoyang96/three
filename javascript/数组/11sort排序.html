@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		/*
+			[10,2,8,55,32,18,9,11,30,16,19,20]
+		 */
+		var arr = [10,2,8,55,32,18,9,11,30,16,19,20];
+
+		// var res = arr.sort();//字符串排序
+
+		// 从小到大排列
+		var res = arr.sort(function(a,b){
+			/*
+				如果函数返回正数：a>b
+				如果函数返回负数：a<b
+				如果函数返回0	: a==b
+			 */
+			return a-b;
+		});
+
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

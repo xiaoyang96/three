@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02表盘刻度</title>
+	<style>
+		.pan{position:absolute;left:50%;top:50%;margin:-150px 0 0 -150px;width:300px;height:300px;border:1px solid #999;border-radius:50%;}
+		.hour{position:absolute;width:10px;height:10px;background-color:#ccc;transform: translate(-50%,-50%);}
+	</style>
+	<script>
+		window.onload = function(){
+
+			// 圆心位置
+			var x = 150;
+			var y = 150;
+
+			var r = 150;
+
+			// 循环设置top,left
+			for(var i=0;i<12;i++){
+				var hp = document.getElementById('h' + (i+1));
+
+				// 时针角度
+				var deg = 360/12*i;
+
+				// 转换弧度
+				var rad = deg*Math.PI/180;
+
+				// 计算直角边
+				var a = r * Math.cos(rad);
+				var b = r * Math.sin(rad);
+
+				// 计算时针位置坐标
+				var x1 = x + a;
+				var y1 = y + b;
+
+				hp.style.left = x1 + 'px';
+				hp.style.top = y1 + 'px';
+
+			}
+
+			
+		}
+	</script>
+</head>
+<body>
+	<div class="pan">
+		<span class="hour" id="h1"></span>
+		<span class="hour" id="h2"></span>
+		<span class="hour" id="h3"></span>
+		<span class="hour" id="h4"></span>
+		<span class="hour" id="h5"></span>
+		<span class="hour" id="h6"></span>
+		<span class="hour" id="h7"></span>
+		<span class="hour" id="h8"></span>
+		<span class="hour" id="h9"></span>
+		<span class="hour" id="h10"></span>
+		<span class="hour" id="h11"></span>
+		<span class="hour" id="h12"></span>
+	</div>
+</body>
+</html>

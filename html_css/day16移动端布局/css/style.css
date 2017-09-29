@@ -1,0 +1,14 @@
+/*
+	媒体查询
+	@media 条件(介质,设备特性)
+		* and 
+		* (min-width:100px),(min-height:1000px)：条件包括100,1000
+ */
+body{background:#efefef;}
+
+
+@media screen and (min-device-width:1000px){
+	body{color:#f60;background-color: #fc0;}
+	h1{color:#00f;}
+}
+

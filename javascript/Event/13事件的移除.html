@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13事件的移除</title>
+	<style>
+		#box{width:100px;height:100px;background-color: #00f;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			var btnAdd = document.getElementsByClassName('add')[0];
+			var btnRemove = btnAdd.nextElementSibling;
+			var box = document.getElementById('box');
+
+
+			// 随机背景色事件
+			// box.onclick = function(){
+			// 	this.style.backgroundColor = randomColor();
+			// }
+
+			box.addEventListener('click',clickHandler,true);
+			function clickHandler(){
+				this.style.backgroundColor = randomColor();
+			}
+
+			// 移除事件
+			btnRemove.onclick = function(){
+				// box.onclick = null;
+
+				// 传入的参数跟添加时一样(同一个函数)，否则不能移除事件
+				box.removeEventListener('click',clickHandler,true)
+			}
+
+
+
+		}
+	</script>
+</head>
+<body>
+	<button class="add">事件添加</button>
+	<button class="remove">事件移除</button>
+
+	<div id="box"></div>
+</body>
+</html>

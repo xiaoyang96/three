@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10元素常用属性</title>
+	<script>
+		window.onload = function(){
+			var div = document.getElementsByTagName('div')[0];
+
+
+			/*
+				innerHTML/outerHTML
+				innerText/outerText
+			 */
+			// console.log('innerHTML:',div.innerHTML)
+			// console.log('outerHTML:',div.outerHTML)
+			console.log('innerText:',div.innerText)
+			console.log('outerText:',div.outerText)
+
+			div.outerText = 'xxx';
+
+
+			//html标准的属性
+
+			div.id = 'box';
+			div.style.border = '1px solid #f00';
+			div.title = '元素常用属性';
+
+			// DOM中对应html结构中的class属性为className
+			div.className = 'mybox';
+
+
+			div.mytile = 'lx';
+			div.class = 'lx11'
+
+
+			
+
+			// 在html结构中写入属性
+			// 格式：setAttribute(attr,val)
+			div.setAttribute('yourtitle','xxx');
+			console.dir(div);
+
+			div.getAttribute('title');
+
+			// 判断是否含有某个属性
+			console.log(div.hasAttribute('yourtitle'));
+
+
+
+			/*// 属性节点操作(不推荐使用节点方式操作属性：麻烦)
+			// attributes
+			console.log(div.attributes);
+			var titleNode = div.attributes[1];//得到属性节点
+			console.log(titleNode.nodeName,titleNode.nodeValue);*/
+
+
+
+		}
+	</script>
+</head>
+<body>
+	<div>
+		hello, hei, hei
+		<strong>你好</strong>
+	</div>
+</body>
+</html>

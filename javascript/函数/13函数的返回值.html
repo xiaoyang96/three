@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13函数的返回值</title>
+	<script>
+		/*
+			想在函数执行后得到一个值
+			必须在函数内部添加return语句
+
+			return
+				* 终止函数的执行
+				* return后如果有值，则把这个值返回到函数执行的地方（返回值）
+				* 如果函数没有return, 则函数从头到尾执行完毕，完后返回undefined
+		 */
+		function sum(){
+			var num1 = 10;
+			var num2 = 20;
+
+			// 终止函数的执行
+			return 10;
+
+			console.log(num1+num2);
+		}
+
+		var res = sum();
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

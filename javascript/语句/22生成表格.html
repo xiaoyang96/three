@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>22生成表格</title>
+	<style>
+		table{border:1px solid #ddd;border-collapse:collapse;}
+		td{border:1px solid #ddd;padding:5px 10px;}
+	</style>
+	<script>
+		/*
+			table
+			* caption
+			* thead
+			* tbody
+			* tfoot
+			* tr
+			* th,td
+
+			// js中生成表格的思路：
+				字符串拼接
+		 */
+		
+		// 行
+		var row = 10;
+
+		// 列
+		var col = 10;
+
+		// 表格字符串
+		var table = '<table><tbody>';
+
+		// 外层循环控制行
+		for(var i=1;i<=row;i++){
+			// 拼接行
+			table += '<tr>';
+
+			// 内层循环控制列
+			for(var j=1;j<=col;j++){
+				// 拼接td
+				table += '<td>单元格'+ i + j +'</td>';
+			}
+
+			// 闭合tr
+			table += '</tr>';
+		}
+
+		// 循环完成后，闭合tbody,table
+		table += '</tbody><table>';
+
+		document.write(table);
+	</script>
+</head>
+<body>
+	<input type="text" id="row">
+	<input type="text" id="col">
+	<button>生成表格</button>
+</body>
+</html>

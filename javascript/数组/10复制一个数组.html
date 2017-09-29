@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10复制一个数组</title>
+	<script>
+		var str = 'html5_1704';
+
+		// 基本数据类型复制
+		var res = str;
+
+
+		// 引用数据类型的复制
+		// 数组的复制
+		// * 遍历
+		var arr = [10,20,30];
+
+		// 遍历复制
+		var newArr = [];
+		for(var i=0;i<arr.length;i++){
+			newArr[i] = arr[i];
+		}
+
+		// 利用数组方法
+		var arr2 = [10,20,30,40,50,60];
+		// var newArr2 = arr2.slice(2,5);//[30,40,50]
+		var newArr2 = arr2.slice(0);
+		newArr2.push(70);
+		console.log(newArr2,arr2);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

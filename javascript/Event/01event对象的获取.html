@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01event对象的获取</title>
+	<style>
+		.box{width:200px;height:100px;background-color: #00f;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				* 事件触发是一瞬间的
+				* event对象
+					* 获取：事件处理函数的第一个参数	
+			 */
+			var box = document.getElementsByClassName('box')[0];
+
+			//mousedown->mouseup->click
+			box.onclick = function(event){
+				console.log('click');
+				console.log(event);
+			}
+			// box.onmousedown = function(){
+			// 	console.log('mousedown');
+			// }
+			// box.onmouseup = function(){
+			// 	console.log('mouseup');
+			// }
+		}
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

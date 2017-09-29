@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14拖拽效果</title>
+	<style>
+		#box{position:absolute;top:0;left:0;width:200px;height:100px;background-color: #58bc58}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				拖拽思路
+					* 鼠标按下 mousedown
+						* 记录按下光标位置距离box左上角的位移
+					* 鼠标移动 mousemove
+						* 改变box的left,top值
+					* 鼠标弹起 mouseup
+						* 去除拖拽效果:清除mousemove事件
+			 */
+			var box = document.getElementById('box');
+
+			box.onmousedown = function(e){
+				e = e || window.event;
+				// 获取按下时（未移动前）
+				var ox = e.clientX - box.offsetLeft;
+				var oy = e.clientY - box.offsetTop;
+
+				// 事件嵌套
+				document.onmousemove = function(evt){
+					// console.log('move')
+					box.style.left = evt.clientX - ox +  'px';
+					box.style.top = evt.clientY - oy + 'px';
+				}
+			}
+
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        table{
+            text-align: center;
+        }
+        td{
+            padding:30px;
+            border:1px solid #ccc;
+        }
+        input{
+            width:412px;
+            outline:none;
+            border:0 none;
+            background:#fff;
+            border:1px solid #ccc;
+            text-align:right;
+        }
+        input:nth-child(1){
+            height:36px;
+            margin-top:100px;
+            border-bottom:0 none;
+        }
+        input:nth-child(2){
+            height:50px;    
+        }
+    </style>
+</head>
+<body>
+    <input type="text" disabled id="inp_1"/>
+    <input type="text" disabled id="inp_2"/>
+    <table cellspacing="16">
+        <tr>
+            <td id="btn_7">7</td>
+            <td id="btn_8">8</td>
+            <td id="btn_9">9</td>
+            <td id="btn_10">/</td>
+            <td id="btn_11">%</td>
+        </tr>
+        <tr>
+            <td id="btn_4">4</td>
+            <td id="btn_5">5</td>
+            <td id="btn_6">6</td>
+            <td id="btn_12">*</td>
+            <td id="clean">C</td>
+        </tr>
+        <tr>
+            <td id="btn_1">1</td>
+            <td id="btn_2">2</td>
+            <td id="btn_3">3</td>
+            <td id="btn_13">-</td>
+            <td rowspan="2" id="equal">=</td>
+        </tr>
+        <tr>
+            <td colspan="2" id="btn_0">0</td>
+            <td id="dec">.</td>
+            <td id="btn_14">+</td>
+        </tr>
+    </table>
+
+    <script type="text/javascript" src="javascript/js_3.js"></script>
+</body>
+</html>

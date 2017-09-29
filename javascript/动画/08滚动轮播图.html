@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08滚动轮播图</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.carousel{position:relative;width:810px;height:320px;overflow:hidden;}
+		.carousel ul{position:absolute;top:0;left:0;}
+		.carousel img{display:block;}
+		.carousel>span{position:absolute;left:10px;top:50%;margin-top:-30px;width:30px;height:60px;line-height:60px;text-align:center;background-color: rgba(0,0,0,0.3);color:#fff;}
+		.carousel>span.next{left:auto;right:10px;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			var carousel = document.querySelector('.carousel');
+			var ul = carousel.querySelector('ul');
+			var len = ul.children.length;
+
+			/*
+				index	top
+				0		0
+				1		-320
+				2		-640
+				3		-960
+
+				推导公式：top = -index*320;
+			 */
+			
+			// 默认显示第一张图片
+			var index = 0;
+
+			// 每隔3s切换一张图片
+			// 改变ul的top值
+			var outerTimer = setInterval(autoPlay,3000);
+
+			// 鼠标移入移出
+			carousel.onmouseenter = ()=>{console.log('over')
+				clearInterval(outerTimer);
+			}
+
+			carousel.onmouseleave = ()=>{console.log('out')
+				outerTimer = setInterval(autoPlay,3000);
+			}
+
+
+			// 前后按钮
+			carousel.onclick = (e)=>{
+				var target = e.target;
+				if(target.classList.contains('prev')){
+					index--;
+					showPic();
+				}else if(target.classList.contains('next')){
+					index++;
+					showPic();
+				}
+			}
+
+
+
+			// 自动轮播
+			function autoPlay(){
+
+				index++;
+
+				
+				showPic();
+				
+			}
+
+			function showPic(){
+				// 防止index超出范围
+				if(index>=len){
+					index = 0;
+				}else if(index<0){
+					index = len-1;
+				}
+
+				// 计算目标值
+				var target = -index * 320;//
+
+
+				clearInterval(carousel.timer);
+
+				// 把定时器与DOM绑定
+				carousel.timer = setInterval(()=>{
+					// 获取原来的值
+					var current = ul.offsetTop;//0->-320
+
+					// 计算速度
+					var speed = (target - current)/10;//-0.5
+
+					// 避免速度为0
+					speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+
+					var top = current + speed;
+
+					if(top === target){
+						clearInterval(carousel.timer);
+					}
+
+					ul.style.top = top + 'px';
+				},20);
+			}
+
+		});
+	</script>
+</head>
+<body>
+	<div class="carousel">
+		<ul>
+			<li><img src="img/001.jpg"></li>
+			<li><img src="img/002.jpg"></li>
+			<li><img src="img/003.jpg"></li>
+			<li><img src="img/004.jpg"></li>
+		</ul>
+		<span class="prev">&lt;</span>
+		<span class="next">&gt;</span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04数学运算</title>
+	<style>
+		#num1{}
+	</style>
+
+</head>
+<body>
+	<input type="text" id="num1">
+	<input type="text" id="num2">
+	<button onclick="jia()">加</button>
+	<button>减</button>
+	<button>乘</button>
+	<button>除</button>
+	<button onclick="qiuyu()">求余</button>
+
+	<script>
+		/*
+			在js中获取元素
+			* document.getElementById(id名)
+
+			* 函数声明
+				* function
+			
+
+			浏览器解析html代码
+			* 从上往下顺序执行
+		 */
+		
+		// 1、获取元素（输入框）
+		var num1 = document.getElementById('num1');
+		var num2 = document.getElementById('num2');
+
+		
+
+		// alert(_num1);
+
+
+		// 声明一个函数
+		// 格式：function 函数名(){}
+		function jia(){
+			// 2、获取输入框的值
+			// 通过value属性得到的是字符串
+			// 如何转换成数字：Number()
+			var _num1 = Number(num1.value);
+			var _num2 = Number(num2.value);
+
+			alert(_num1+_num2);
+		}
+
+		// 函数的执行
+		// jia();
+
+		// 求余
+		function qiuyu(){
+			var _num1 = num1.value;//得到的数据类型是：字符串
+			var _num2 = num2.value;//字符串
+			alert(_num1%_num2);
+		}
+
+		// 字符串拼接
+		// +号两边只要有一个是字符串，就是拼接
+		var s1 = 'xie';
+		var s2 = 'jinrong';
+		var fullName = s1 + s2;
+		//alert(fullName)
+	</script>
+</body>
+</html>

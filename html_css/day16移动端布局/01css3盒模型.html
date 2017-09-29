@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01css3盒模型</title>
+	<style>
+		/*
+			box-sizing:;
+				* border-box;
+				* content-box;
+		 */
+		.container{width:500px;height:100px;}
+		.left{float:left;padding:20px;width:200px;height:100px;background: #f00;box-sizing: border-box;}
+		.right{float:right;width:300px;height:100px;background: #0f0;box-sizing: border-box;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+</body>
+</html>

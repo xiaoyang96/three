@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05获取当天为星期几</title>
+	<script>
+	window.onload = function(){
+
+		var mood = document.getElementById('mood');
+		var output = document.getElementById('output');
+
+		/*
+			* getDay()
+		 */
+		var now = new Date();
+
+		// 获取当前所在的星期
+		var week = now.getDay();//0-6=>星期天-星期六//4
+
+		console.log(week);
+
+		// 改变图片的src属性
+		mood.src = 'img/mood/'+week+'.png';
+
+		var arr_week = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'];
+
+		output.innerHTML = arr_week[week];
+	}
+
+
+	</script>
+</head>
+<body>
+	<h1>每天心情</h1>
+	<img src="img/mood/0.png" id="mood">
+	<div id="output"></div>
+</body>
+</html>

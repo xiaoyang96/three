@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<!-- 同步代码 -->
+	<!-- <script src="js/common.js"></script>
+	<script src="js/carousel.js"></script>
+	<script src="js/home.js"></script> -->
+
+	<!-- 
+		* 配置入口模块：data-main
+
+		* requrejs解决的问题：
+			1.实现js文件的异步加载，避免网页失去响应；
+			2.管理模块之间的依赖性，便于代码的编写和维护。
+		* 基础路径
+			* 默认值是加载require.js的HTML文件所在的路径
+			* 但如果用了data-main属性，则主模块所在的目录就变成baseUrl
+	-->
+	<script src="js/require.js" data-main="js/home"></script>
+</head>
+<body>
+	<h1>首页</h1>
+</body>
+</html>

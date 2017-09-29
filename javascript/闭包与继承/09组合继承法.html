@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08继承</title>
+	<script>
+	/*
+		组合继承法：
+		* 原型链继承法：继承方法
+		* 借用构造函数：继承属性
+	 */
+		// Person:父类
+		function Person(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+		}
+
+		// 原型
+		Person.prototype = {
+			say:function(){
+				console.log('say hello');
+			},
+			study:function(){
+
+			}
+		}
+
+		Object.defineProperty(Person.prototype,'constructor',{
+			value:Person
+		})
+
+
+
+		// Man：子类
+		function Man(name,age,gender){
+			// 借用构造函数法
+			// 复制所有属性
+			Person.call(this,name,age,gender);
+
+		}
+
+		// 原型链继承法
+		// 把Man的prototype指向Person的实例
+		Man.prototype = new Person();
+
+		var m1 = new Man('关羽',48,'男');
+		m1.say();
+
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

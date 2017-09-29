@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>05改变主轴方向</title>
+    <style>
+		.box{width:500px;height:500px;border:1px solid #ddd;
+
+			display:flex;
+			/*改变主轴方向*/
+			/*flex-direction:column;*/
+
+			/*当容器容纳不下时，是否换行*/
+			flex-wrap:wrap;
+		}
+		.box span{margin:10px;width:100px;height:100px;display:inline-block;background-color: #f00;}
+    </style>
+</head>
+
+<body>
+	<div class="box">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</body>
+
+</html>

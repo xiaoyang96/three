@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09匿名函数</title>
+	<script>
+		/*
+			匿名函数的执行
+				* 避免污染全局命名空间
+		 */
+		
+		// 执行方式1：
+		(function(){
+			console.log('匿名函数的执行1');
+		})();
+
+		(function(){
+			console.log('匿名函数的执行2');
+		}());
+
+		+function(){
+			console.log('匿名函数的执行3');
+		}();
+
+		-function(){
+			console.log('匿名函数的执行4');
+		}();
+
+		!function(){
+			console.log('匿名函数的执行5');
+		}();
+
+
+		// 匿名函数传参
+		(function(num){
+			console.log('匿名函数的传参：' + num);
+		})(10);
+
+	</script>
+</head>
+<body>
+	<h1>打印按钮的索引值</h1>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+
+	<script>
+		(function(){
+			var btns = document.querySelectorAll('button');
+
+			for(var i=0;i<btns.length;i++){
+				(function(i){
+					btns[i].onclick = function(){
+						console.log(i);
+					}
+				})(i);
+				
+			}
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09利用节点关系获取元素</title>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			/*
+				针对元素节点的属性
+				* 父元素：parentNode => parentElement
+				* 子元素：
+					* firstChild => firstElementChild
+					* lastChild => lastElementChild
+					* childNodes => children   //(无兼容问题)
+				* 兄弟元素
+					* previousSibling => previousElementSibling
+					* nextSibling => nextElementSibling
+			*/
+			var datalist = getElementsByClassName('datalist')[0];
+
+			// 兄弟元素
+			var h1 = datalist.previousElementSibling;
+			console.log(h1);
+
+			// 子元素
+			var ul = datalist.firstElementChild;
+			console.log(ul)
+
+			var lis = ul.children
+			console.log(lis);
+		}
+	</script>
+</head>
+<body>
+	<h1>利用节点关系获取元素</h1>
+	<div class="datalist">
+		<ul>
+			<li>商品1</li>
+			<li>商品2</li>
+			<li>商品3</li>
+			<li>商品4</li>
+			<li>商品5</li>
+			<li>商品6</li>
+			<li>商品7</li>
+			<li>商品8</li>
+			<li>商品9</li>
+			<li>商品10</li>
+		</ul>
+	</div>
+</body>
+</html>

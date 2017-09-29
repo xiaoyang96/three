@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10给对象添加属性</title>
+	<script>
+		//给对象添加属性：属性名必须是字符串
+		//如果不是字符串，则自动调用.toString()转换成字符串
+		var obj = {};
+		obj.name = 'laoxie';
+		obj['name'] = 'laoxie';
+
+		var attr = 'age';
+		obj[attr] = 18;
+
+		var arr = [10,20,30];
+		obj[arr] = 'arr';
+
+		var arr_obj = {name:'xxx'};
+		obj[arr_obj] = 'obj';
+
+		console.log(obj);
+
+
+		
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

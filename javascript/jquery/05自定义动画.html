@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05自定义动画</title>
+	<style>
+		.box{position: absolute;left:0;top:50px;width:200px;}
+		.box img{width:100%;}
+	</style>
+	<script src="js/jquery-3.2.1.js"></script>
+	<script>
+		jQuery($=>{
+			/*
+				* jquery动画速度
+					* slow : 600
+					* normal : 400 （默认）
+					* fast : 200
+				* 动画队列
+					* 同一个元素的动画，前面如果有动画未执行完成，则后面的动画排队
+					*
+				* stop([clearQueue],[jumpToEnd])
+					* 停止当前元素所有《正在运行》的动画
+					* 
+			 */
+			$box = $('.box');
+			$btnGo = $('.btnGo');
+			$btnAdd = $('.btnAdd');
+			$btnStop = $('.btnStop');
+
+			$btnGo.on('click',function(){
+				$box.animate({left:800,top:100},2000,function(){
+					$box.css('border',"5px solid #58bc58")
+				}).delay(2000).animate({width:100},1000);
+			});
+
+
+			$btnAdd.on('click',function(){
+				$box.animate({opacity:0.5},2000)
+			});
+
+			$btnStop.click(function(){
+				$box.stop(true,true);
+			})
+		})
+	</script>
+</head>
+<body>
+	<button class="btnGo">走你~</button>
+	<button class="btnAdd">添加动画</button>
+	<button class="btnStop">停止动画</button>
+	<div class="box">
+		<img src="img/zb.jpg">
+	</div>
+</body>
+</html>

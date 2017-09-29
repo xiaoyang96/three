@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性特性</title>
+	<script>
+		/*
+			属性特性
+			* writable: 可写
+			* enumerable: 可枚举（可遍历）
+			* value
+			* configurable：可配置性，控制着其描述的属性的修改，表示能否修改属性的特性
+
+			* Object.defineProperty(object, propertyname, descriptor)
+			对指定的对象的一个属性设置属性特性
+			* Object.getOwnPropertyDescriptor(object, propertyname)
+		 */
+		
+		var person = {};
+
+		// 传统设置属性方式
+		// 属性特性默认值都为true
+		person.name = '关羽';
+
+		person.age = 18
+		
+
+		// 使用defineProperty设置属性
+		// 属性特性默认为false
+		Object.defineProperty(person,'age',{
+			writable:false,//属性不可修改
+			enumerable:false,
+			value:18
+		});
+
+		console.log(person);
+
+		for(var attr in person){
+			console.log(attr);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

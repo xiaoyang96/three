@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09面试题</title>
+	<script>
+		/*
+			声明提前
+				* 提前到当前作用域顶部
+		 */
+		var num = 10;
+		function sum(){
+			// var num;
+			// num = 20;
+			console.log(num);
+
+
+			var num = 30;
+		}
+
+		sum();//30,10,undefined
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

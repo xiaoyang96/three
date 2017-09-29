@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getip</title>
+	<script>
+		/*
+			* 创建一个Promise对象
+				* 三个状态
+					* Pending
+					* Resolved
+					* Rejected
+				* resolve()把Promise对象的状态改成Resolved
+				* reject() 把Promise对象的状态改成Rejected
+		 */
+
+		 //目的：解决ajax嵌套
+		var pro_ip = new Promise(function(resolve,reject){
+			// 获取IP
+			var xhr_ip = new XMLHttpRequest();
+			xhr_ip.onload = function(){
+				if(xhr_ip.status === 200 || xhr_ip.status === 304){
+					var ip = xhr_ip.responseText;
+
+					// 把pro_ip的状态改成Resolved
+					resolve(ip);
+
+					// 把pro_ip的状态改成Rejected
+					// reject();
+				}
+			}
+			xhr_ip.open('get','/api/get_ip.php',true);
+			xhr_ip.send();
+		});//pending
+
+
+		pro_ip.then(function(ip){
+			// 根据IP获取城市
+			var pro_city = new Promise(function(resolve,reject){
+				var xhr_city = new XMLHttpRequest();
+				xhr_city.onload = function(){
+					if(xhr_city.status === 200 || xhr_city.status === 304){
+						var city = xhr_city.responseText;
+
+						resolve(city);
+						// reject('失败了')
+					}
+				}
+				xhr_city.open('get','/api/get_city.php?ip='+ip,true);
+				xhr_city.send(); 
+			});
+
+			// 返回一个Promise对象
+			return pro_city;
+		},function(){
+			console.log('low,low,low');
+		}).then(function(city){
+			console.log(city);
+			// 根据城市获取天气
+			var xhr_weather = new XMLHttpRequest();
+			xhr_weather.onload = function(){
+				if(xhr_weather.status === 200 || xhr_weather.status === 304){
+					var weather = JSON.parse(xhr_weather.responseText);
+					console.log(weather);
+
+				}
+			}
+			xhr_weather.open('get','http://wthrcdn.etouch.cn/weather_mini?city='+city,true);
+			xhr_weather.send();
+		}).catch(function(a){
+			console.log(a);
+		});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

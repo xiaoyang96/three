@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表</title>
+	<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		var goodslist = document.querySelector('.goodslist');
+		var btn = document.querySelector('#btn');
+
+		// 如何通过js获取接口（后端提供）数据
+		// ajax
+
+		// 1.创建一个异步请求对象
+		var xhr = new XMLHttpRequest();//reayState:0
+
+		// 4.处理数据
+		xhr.onreadystatechange = function(){
+			console.log(xhr.readyState);//1,2,3,4
+			if(xhr.readyState === 4){
+				// 把json字符串转换成数组
+				var res = JSON.parse(xhr.responseText);
+				console.log(res);
+
+				var ul = document.createElement('ul');
+				ul.innerHTML = res.map(item=>{
+					return `<li data-guid="${item.guid}">
+						<a href="#"><img src="${item.imgurl}"/></a>
+						<h4>${item.title}</h4>
+						<p class="price">价格：<span>${item.price}</span></p>
+					</li>`
+				}).join('');
+
+				// 把数据写入页面
+				goodslist.innerHTML = '';
+				goodslist.appendChild(ul);
+			}
+		}
+
+		// 2. 配置参数，建立与服务器的连接
+		xhr.open('get','http://localhost:1704/api/goodslist.php',true);//readyState:1
+
+		// 3.发送请求
+		xhr.send();//readyState:2
+
+
+		btn.onclick = function(){
+			// 2. 配置参数，建立与服务器的连接
+			xhr.open('get','http://localhost:1704/api/goodslist.php',true);//readyState:1
+
+			// 3.发送请求
+			xhr.send();//readyState:2
+		}
+		
+	})
+	</script>
+</head>
+<body>
+	<h1>商品列表</h1>
+	<button id="btn">更新数据</button>
+	<div class="goodslist">
+	</div>
+</body>
+</html>

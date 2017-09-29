@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闰年判断</title>
+	<style>
+		.runnian{color:#f90;}
+		.error{color:#f00;}
+	</style>
+</head>
+<body>
+	<input type="text" id="year"><button onclick="checkRunNian()">是否闰年</button>
+	<div id="output"></div>
+	<script>
+		// 获取元素
+		var year = document.getElementById('year');
+		var output = document.getElementById('output');
+
+		
+		// 函数
+		// 函数声明
+		function checkRunNian(){
+			// 获取输入框的值：年份
+			var _year = year.value;
+
+			// 判断是否闰年
+			if((_year%4===0 && _year%100!==0) || _year%400 === 0){
+				// alert('闰年');
+				output.innerHTML = '<span class="runnian">闰年</span>';
+			}
+
+			// 如果判断是否为数字
+			// isNaN(10) => false
+			// isNaN('abc') => true
+			// isNaN('10') => false
+			else if(isNaN(_year)){
+				output.innerHTML = '<span class="error">请输入正确的年份</span>'
+			}else{
+				// alert('平年');
+				output.innerHTML = '平年';
+			}
+		}
+
+		// 调用
+		// checkRunNian()
+		
+	</script>
+</body>
+</html>

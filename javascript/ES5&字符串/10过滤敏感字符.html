@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10过滤敏感字符</title>
+	<style>
+		.container{width:600px;margin:0 auto;}
+		textarea{width:600px;height:100px;display: block;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				过滤敏感字符
+				1）获取元素
+				2）给按钮绑定click事件
+					* 获取输入的消息
+					* 把消息添加到数组中，通过操作数组把内容显示到页面
+			 */
+			var msglist = document.getElementById('msglist');
+			var msg = document.getElementById('msg');
+			var btn = document.getElementById('btn');
+
+			// 保存消息的数组
+			var arr_msg = [];
+
+			// 敏感字符
+			var mingan = '法轮功,shit,fuck,妈的,操,TMD,金三胖'.split(',');
+
+			// 绑定点击事件，用于发送消息
+			btn.onclick = function(){
+				// 获取输入的信息
+				var _msg = msg.value.trim();
+				
+				//我讨厌法轮功=>我讨厌**
+				//我讨厌TMD法轮功=>我讨厌**
+
+				// 判断输入不能为空
+				if(_msg===''){
+					return;
+				}
+
+
+				// 过滤敏感字符
+				// 替换：replace()
+				// 支持正则表达式
+				mingan.forEach(function(mg){
+					// var reg = /mg/gi;
+					var reg = new RegExp(mg,'gi');
+					_msg = _msg.replace(reg,'**');
+				});
+
+
+				arr_msg.push(_msg);
+				console.log(arr_msg);
+
+				
+
+				msglist.innerHTML = render();
+
+
+				// 清空输入框
+				msg.value = '';
+
+				// 自动获得焦点
+				msg.focus();
+			}
+
+			// 把生成html结构封装成函数
+			function render(){
+				// 通过操作数组把内容显示到页面
+				var res = arr_msg.map(function(item){
+					return '<li>'+item+'</li>';
+				}).join('');
+
+				return res;
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>过滤敏感字符</h1>
+		<ul id="msglist">
+		</ul>
+		<textarea id="msg"></textarea>
+		<button id="btn">提交</button>
+	</div>
+</body>
+</html>

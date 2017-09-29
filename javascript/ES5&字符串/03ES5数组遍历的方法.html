@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03ES5数组遍历的方法</title>
+	<script>
+	window.onload = function(){
+
+		/*
+			ES5数组遍历的方法
+			* forEach()
+			* map()
+			* filter()
+		 */
+
+		 var goodslist = [{
+		    name:'iphone7 plugs',
+		    price:5899.00,
+		    color:'土豪金',
+		    imgurl:'img/ip7.jpg'
+		},{
+		    name:'Note7',
+		    price:3899.00,
+		    color:'黑色',
+		    imgurl:'img/note7.jpg'
+		},{
+		    name:'荣耀7',
+		    price:1999.00,
+		    color:'白色',
+		    imgurl:'img/honor7.jpg'
+		}];
+
+		// for(var i=0;i<arr.length;i++){
+		// 	// arr[i]
+		// }
+
+
+		// forEach()
+		// 遍历数组
+		var str = '<ul>'
+		goodslist.forEach(function(item,idx,arr){
+			// console.log(666);
+			// console.log(arr);
+			str += '<li>'+item['name']+'</li>';
+		});
+		str += '</ul>';
+		console.log(str);
+
+		// map()
+		// 返回每次函数调用的结果组成的数组
+		var res = goodslist.map(function(item){
+			console.log(666);
+
+			// return 10;
+			// return item.price;
+			return '<li>' + 
+				'<img src="'+item.imgurl+'">' + 
+				'<h4>'+item.name+'</h4>' + 
+				'<p class="price">价格：<span>'+item.price+'</span></p>' + 
+				'<p class="colo">颜色：<span>'+item.color+'</span></p>' + 
+			'</li>';
+		});
+
+		console.log(res);//[10,10,10]
+
+		var datalist = document.getElementById('datalist');
+
+		datalist.innerHTML = res.join('');
+
+
+		// filter()
+		// 过滤
+		// 过滤低于4000块的手机
+		var res2 = goodslist.filter(function(item){
+
+			// 取决于函数的额返回值是否为true
+			return item.price >= 4000;
+		});
+		console.log(res2);
+
+
+		// some()/every()
+		var arr = [10,20,30];
+		var res3 = arr.some(function(item){
+			return item>10;
+		});
+		var res4 = arr.every(function(item){
+			return item>=10;
+		});
+		console.log(res4);
+	}
+
+	</script>
+</head>
+<body>
+	<h1>商品列表</h1>
+	<ul id="datalist"></ul>
+</body>
+</html>

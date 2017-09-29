@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<style>
+	ul{list-style: none;}
+		#cartList li{position:relative;padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid #ddd;}
+		#cartList img{display:block;width:100px;}
+		#cartList li .btn-close{position:absolute;top:0;right:0;padding:0 5px;cursor:default;}
+		#cartList li .btn-close:hover{background-color:#f00;color:#fff;}
+		.subPrice{padding:5px 20px;color:#f00;font-weight:bold;text-align:right;}
+		#cartList .price span{color:#f00;}
+		.price span::before{
+			content:'￥';
+			font-size:11px;
+		}
+		#cartList .price span{font-size:11px;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+	window.onload = function(){
+		/*
+			读取cookie中的cartlist
+			把json字符串转换成对象/数组：JSON.parse()
+			json字符串格式：
+				1.必须用双引号
+				2.不能右注释
+		 */
+		
+		var cartList = document.getElementById('cartList');
+		var btnClear = document.getElementById('btnClear');
+		var subPrice = document.getElementsByClassName('subPrice')[0];
+
+		 var cookies = document.cookie;//'cartlist=[{},{}]; myname=laoxie; myClass=h51704'
+
+		 var cartlist = [];
+
+		 if(cookies.length>0){
+
+		 	// 拆分成数组
+		 	cookies = cookies.split('; ');//['cartlist=[{},{}]','myname=laoxie','myClass=h51704']
+
+		 	cookies.forEach(function(item){
+		 		var arr = item.split('=');//['cartlist','[{},{}]'] , ['myname','laoxie']
+
+		 		if(arr[0] === 'cartlist'){
+		 			cartlist = JSON.parse(arr[1]);
+		 		}
+		 	})
+		 }
+
+		 console.log(cartlist);
+
+		 render()
+
+
+		 // 清空购物车
+		 // * 删除cookie
+		 // * 删除DOM节点
+		 // * 重置价格
+		 btnClear.onclick = function(){
+		 	// 删除cookie
+		 	Cookie.remove('cartlist');
+
+		 	// 删除DOM节点
+		 	cartList.innerHTML = '';
+
+		 	subPrice.innerHTML = '总计：0.00'
+		 }
+
+
+		 // 事件委托实现删除单个商品效果
+		 // * 删除cookie中对应的商品数据
+		 // * 删除对应DOM节点
+		 cartList.onclick = function(e){
+		 	e = e || window.event;
+		 	var target = e.target || e.srcElement;
+
+
+		 	if(target.className === 'btn-close'){
+		 		// 获取当前li
+		 		var currentLi = target.parentNode;
+
+		 		var guid = currentLi.getAttribute('data-guid');
+
+		 		// 删除DOM
+		 		// currentLi.parentNode.removeChild(currentLi);
+
+
+		 		// 删除cookie
+		 		// 1）先找到cookie中对应的数据，并删除它
+		 		// 2）重写cookie
+		 		cartlist.forEach(function(item,idx){
+		 			if(item.guid === guid){
+		 				cartlist.splice(idx,1);
+		 			}
+		 		});
+
+		 		var now = new Date();
+		 		now.setDate(now.getDate()+8);
+		 		Cookie.set('cartlist',JSON.stringify(cartlist),now);
+
+		 		render();
+		 	}
+		 }
+
+
+		 function render(){
+		 	// 计算总价
+			 var totalPrice = 0;
+
+			 var ul = document.createElement('ul');
+			 ul.innerHTML = cartlist.map(function(item){
+			 	totalPrice += item.sale * item.qty;
+
+			 	return '<li data-guid="'+item.guid+'">'
+			 		+ '<img src="'+item.imgurl+'">'
+			 		+ '<h4>'+item.title+'</h4>'
+			 		+ '<p class="price">价格：<del>'+item.price+'</del></p>'
+			 		+ '<p class="price">现价：<span>'+item.sale+'</span></p>'
+			 		+ '<p class="save">优惠：<span>'+(item.price - item.sale)+'</span></p>'
+			 		+ '<p class="qty">数量：'+item.qty+'</p>'
+			 		+ '<span class="btn-close">&times;</span>'
+			 	+ '</li>'
+			 }).join('');
+
+			 cartList.innerHTML = '';
+			 cartList.appendChild(ul);
+			 subPrice.innerHTML = '总计：' + totalPrice.toFixed(2);
+		 }
+	}
+		
+	</script>
+</head>
+<body>
+	<h1>购物车</h1>
+	<div id="cartList">
+		
+	</div>
+	<div class="subPrice"></div>
+	<a href="#" id="btnClear">清空购物车</a>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01cookie的设置与获取</title>
+	<script>
+		// 添加参数exipres
+		// 格式：参数名=参数值
+		// exipres=
+		var now = new Date();
+
+		// 设置成7天后的时间
+		now.setDate(now.getDate()+7);
+
+		document.cookie = 'className=h5_1704;expires=' + now.toString();
+
+		// cookie得获取
+		// 得到一个包含多个cookie得字符串，每个cookie之间以分号+空格（; ）隔开
+		console.log(document.cookie);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

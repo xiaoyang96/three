@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08滚动轮播图</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.carousel{position:relative;width:810px;height:320px;overflow:hidden;}
+		.carousel ul{position:absolute;top:0;left:0;overflow: hidden;}
+		.carousel ul li{float:left;}
+		.carousel img{display:block;}
+		.carousel>span{position:absolute;left:10px;top:50%;margin-top:-30px;width:30px;height:60px;line-height:60px;text-align:center;background-color: rgba(0,0,0,0.3);color:#fff;}
+		.carousel>span.next{left:auto;right:10px;}
+
+		.carousel .page{position:absolute;left:50%;bottom:10px;transform:translate(-50%,0);}
+		.carousel .page span{display:inline-block;margin:0 5px;width:20px;height:20px;line-height: 20px;text-align:center;background-color: rgba(255,255,255,0.8);border-radius:50%;}
+		.carousel .page span.active{background-color: #fc0;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+
+
+	document.addEventListener('DOMContentLoaded',function(){
+		function Carousel(options){
+			var {
+				// 图片列表
+				imgs,
+
+				// 容器
+				container='.carousel',
+
+				width=810,
+				height=320,
+
+				// 索引值
+				index=0,
+
+				// 自动轮播
+				autoPlay=true,
+
+				// 页码
+				page=true,
+
+				// 图片切换时间间隔
+				duration=3000,
+
+				// 无缝滚动
+				seamless=true
+			} = options;
+
+			// 属性无缝
+			this.container = container;
+			this.width = width;
+			this.height = height;
+			this.imgs = imgs;
+			this.autoPlay = autoPlay;
+			this.page = page;
+			this.duration = duration;
+			this.seamless = seamless;
+
+			this.len = this.imgs.length;
+
+			// 默认显示索引值
+			this.index = index;
+		}
+
+		/*
+			初始化
+			* 生成html节点
+			* 绑定事件
+		 */
+		Carousel.prototype.init = function(){
+			this.container = document.querySelector(this.container);
+
+			// @生成html结构
+			var ul = document.createElement('ul');
+			ul.innerHTML = this.imgs.map(item=>{
+				return `
+					<li><img src="${item}"></li>
+				`;
+			}).join('');
+
+			// 写入页面
+			this.container.appendChild(ul);
+
+			
+
+
+
+			// 生成页码
+			if(this.page){
+				var page = document.createElement('div');
+				page.className = 'page';
+
+				for(var i=0;i<this.len;i++){
+					var span = document.createElement('span');
+					span.innerText = i+1;
+
+					// 高亮
+					if(i===this.index){
+						span.className = 'active';
+					}
+
+					page.appendChild(span);
+				}
+
+				this.container.appendChild(page);
+			}
+
+
+			// 无缝滚动
+			if(this.seamless){
+				ul.appendChild(ul.children[0].cloneNode(true));
+				this.len++;
+			}
+
+			// 水平滚动添加ul宽度
+			ul.style.width = this.width * this.len + 'px';
+
+
+			// @绑定事件
+
+			// 鼠标移入移出
+			this.container.onmouseenter = ()=>{
+				this.stop();
+			}
+			this.container.onmouseleave = ()=>{
+				this.move();
+			}
+
+			// 点击页面切换
+			this.container.onclick = (e)=>{
+				if(e.target.parentNode.className === 'page'){
+					this.index = e.target.innerText-1;
+					this.showPic();
+				}
+			}
+
+			this.ele = ul;
+			this.page = page;
+
+			return this;
+		}
+		Carousel.prototype.move = function(){
+			this.timer = setInterval(this.autoChange.bind(this),this.duration);
+
+			return this;
+		}
+		Carousel.prototype.stop = function(){
+			clearInterval(this.timer);
+			return this;
+		}
+
+		// 滚动动画方法
+		Carousel.prototype.showPic = function(){
+			// 防止index超出范围
+			if(this.index>=this.len){
+				if(this.seamless){
+					// 一瞬间移动到初始位置
+					this.ele.style.left = 0;
+					this.index = 1;
+				}else{
+					this.index = 0;
+				}
+				
+			}else if(this.index<0){
+				this.index = this.len-1;
+			}
+
+			// 计算目标值
+			var target = -this.index * this.width;
+
+			animate(this.ele,{left:target});
+
+			// // 分页高亮
+			for(var i=0,len=this.seamless?this.len-1:this.len;i<len;i++){
+				this.page.children[i].className = '';
+			}
+
+			// 当图片滚动到复制图片时，显示第1分页高亮
+			if(this.seamless){
+				if(this.index==this.len-1){
+					this.page.children[0].className = 'active'
+				}else{
+					this.page.children[this.index].className = 'active';
+				}
+			}else{
+				this.page.children[this.index].className = 'active';
+			}
+			
+			return this;	
+		}
+
+		// 自动切换图片
+		Carousel.prototype.autoChange = function(){console.log(this)
+			this.index++;
+			this.showPic();
+			return this;
+		}
+
+		new Carousel({
+			imgs:['img/001.jpg','img/002.jpg','img/003.jpg','img/004.jpg'],seamless:false
+		}).init().move();
+	});
+	</script>
+</head>
+<body>
+	<div class="carousel">
+		<!-- <ul>
+			<li><img src="img/001.jpg"></li>
+			<li><img src="img/002.jpg"></li>
+			<li><img src="img/003.jpg"></li>
+			<li><img src="img/004.jpg"></li>
+		</ul> -->
+	</div>
+</body>
+</html>

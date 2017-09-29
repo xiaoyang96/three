@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>16进制</title>
+	<script>
+		// 二进制
+		var num_2 = 0b101010101;
+
+		// 八进制
+		var num_8 = 0o755;
+
+		// 十六进制
+		var num_16 = 0xffcc00;
+
+		// 十进制
+		var num_10 = 100;
+
+		// 输出时会把其他进制自动转成十进制
+		// console.log(num_2);
+
+
+		// 十进制转成其他进制
+		var num = 10;
+
+		// 十转二
+		var res_2 = num.toString(2);
+		console.log('十转二: ',res_2);
+
+		// 十转八
+		var res_8 = num.toString(8);
+		console.log('十转八: ',res_8);
+
+		// 十转十六
+		var res_16 = num.toString(16);
+		console.log('十转十六: ',res_16);
+
+		// 其他转十进制
+		// 二转十
+		var b2 = '110101';
+		var res1 = parseInt(b2,2);
+		console.log(res1);
+
+		// 其他转其他
+		// 思路：先转成10进制，然后再转其他
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05愤怒的小鸟</title>
+	<style>
+		img{position:absolute;left:0;top:0;width:200px;}
+
+		.right{transform:rotateY(180deg);}
+		.down{transform: rotateZ(-45deg);}
+		.up{transform: rotateZ(45deg);}
+	</style>
+	<script>
+		window.onload = function(){
+			// var img = document.getElementsByTagName('img');
+
+			// 页面上所有的图片
+			var bird = document.images[0];
+			
+
+			document.onkeydown = function(event){
+				// 兼容写法
+				event = event || window.event;
+
+				// if(event){
+				// 	event = event;
+				// }else{
+				// 	event = window.event;
+				// }
+
+				// 判断是否按下方向键
+				// 上下左右
+				var keyCode = event.keyCode;
+
+				var left = bird.offsetLeft;
+				var top = bird.offsetTop;
+
+				switch(keyCode){
+					case 37:
+						bird.className = '';
+						// bird.style.left = bird.offsetLeft - 10 + 'px';
+						left -= 10;
+						break;
+
+					// 右
+					case 39:
+						bird.className = 'right';
+						// bird.style.left = bird.offsetLeft + 10 + 'px';
+						left += 10;
+						break;
+					case 38:
+						bird.className = 'up';
+						// bird.style.top = bird.offsetTop - 10 + 'px';
+						top -= 10;
+						break;
+
+					// 下
+					case 40:
+						bird.className = 'down';
+						// bird.style.top = bird.offsetTop + 10 + 'px';
+						top += 10;
+						break;
+				}
+
+				bird.style.left = left + 'px';
+				bird.style.top = top + 'px';
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<img src="img/bird.jpg">
+</body>
+</html>

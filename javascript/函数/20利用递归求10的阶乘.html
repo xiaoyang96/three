@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>20利用递归求10的阶乘</title>
+	<script>
+		/*
+			利用递归求任意数字的阶乘
+			5!=1*2*3*4*5 => 5*4*3*2*1
+		 */
+		function factorial(n){
+			if(n===1){
+				return 1;
+			}
+
+			return n * factorial(--n);
+		}
+
+		factorial(5);//5*4*3*2*1
+		factorial(1);//1
+		factorial(2);//2*1
+		factorial(3);//3*2*1
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

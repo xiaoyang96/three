@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用事件委托实现新添加的按钮响应点击事件</title>
+	<script>
+		window.onload =function(){
+			var btn = document.getElementsByTagName('button');
+
+			// 单个按钮绑定事件方式
+			/*for(var i=0;i<btn.length;i++){
+				btn[i].onclick = function(){
+					console.log(this.innerText);
+				}
+			}*/
+
+
+			// 事件委托方式
+			document.body.onclick = function(e){
+				e = e || window.event;
+				var target = e.target || e.srcElement;
+
+				if(target.tagName.toLowerCase() === 'button'){
+					console.log(target.innerText);
+				}
+			}
+
+			
+
+			var myBtn = document.createElement('button');
+			myBtn.innerHTML = '你的益达';
+			document.body.appendChild(myBtn);
+		}
+	</script>
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+</body>
+</html>

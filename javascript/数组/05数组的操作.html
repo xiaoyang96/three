@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05数组的操作</title>
+	<script>
+		/*
+			05数组的操作
+				* 增
+				* 删
+				* 查
+				* 改
+		 */
+		
+		var arr = ['TFBoy','周杰伦','lemon','laoxie'];
+
+		// 往数组后面添加
+		arr[arr.length] = 'dk';
+
+		// 数组的方法：push
+		// 往数组尾部添加一个或多个元素，返回数组新的长度
+		var res = arr.push('叶蓝梦');//res=>6
+
+		console.log(arr,res);
+
+		// 数组的方法：unshift
+		// 往数组开头添加一个或多个元素，返回数组新的长度
+		var res2 = arr.unshift('TFGirl');
+		console.log(arr,res2);
+
+
+		// 数组的方法：shift
+		// 删除数组第一个元素，返回删除的元素
+		var res3 = arr.shift();
+		console.log(arr,res3);
+
+		// 数组的方法：shift
+		// 删除数组最后一个元素，返回删除的元素
+		var res4 = arr.pop();
+		console.log(arr,res4);
+
+
+		// 在数组任意位置添加元素
+		// 数组方法：splice(idx,deleteQty,...添加元素)
+		// 功能：添加、删除、替换
+		// 返回值(Array)：删除的元素
+
+		// 添加：在周杰伦后添加“双截棍”
+		var res5 = arr.splice(2,0,'双截棍');
+		console.log(arr,res5);
+
+		// 删除laoxie
+		var res6 = arr.splice(4,1);
+		console.log(arr,res6);
+
+		// 替换：替换lemon为小仙女
+		// 先删除后添加
+		var res7 = arr.splice(3,1,'小仙女');
+		console.log(arr,res7);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

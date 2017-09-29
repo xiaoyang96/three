@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08节点关系</title>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			/*
+				标准浏览器：把换行当作一个文本节点
+				ie8-：		忽略换行
+			 */
+			// var datalist = document.getElementsByClassName('datalist')[0];
+			// var datalist = document.getElementById('datalist');
+			var datalist = getElementsByClassName('datalist')[0];
+			console.log(datalist);
+
+
+			// h1
+			var h1 = datalist.previousSibling;//#text
+			// console.log(h1.nodeValue);
+
+
+			// 解决标准浏览器下得到空文本节点得问题
+			// 封装方法过滤空文本节点
+			function getPreviousElement(ele){
+				var res = ele.previousSibling;console.log(res)
+
+				if(res && res.nodeType != 1){
+					res = res.previousSibling;
+				}
+
+				return res;
+			}
+
+			var hh = getPreviousElement(datalist);//h1
+			console.log(hh);
+
+
+
+			// 获取ul
+			var ul = datalist.firstChild;
+			console.log(ul)
+
+		}
+	</script>
+</head>
+<body><div class="datalist" id="datalist">
+		<ul>
+			<li>
+				<img src="img/1.jpg" alt="">
+				<h4>商品1</h4>
+			</li>
+			<li>
+				<img src="img/2.jpg" alt="">
+				<h4>商品2</h4>
+			</li>
+			<li>
+				<img src="img/3.jpg" alt="">
+				<h4>商品3</h4>
+			</li>
+			<li>
+				<img src="img/4.jpg" alt="">
+				<h4>商品4</h4>
+			</li>
+			<li>
+				<img src="img/5.jpg" alt="">
+				<h4>商品5</h4>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

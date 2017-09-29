@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15拖拽图片</title>
+	<style>
+		img{position: absolute;top:0;left:0;}
+	</style>
+	<script>
+		window.onload = function(){
+			var img  = document.images[0];
+
+			img.addEventListener('mousedown',function(e){
+				// var ox = e.clientX - img.offsetLeft;//（放心）
+				var ox = e.offsetX;
+				var oy = e.offsetY;
+
+				img.mousemoveHandler = function(evt){
+					img.style.left = evt.clientX - ox + 'px';
+					img.style.top = evt.clientY - oy + 'px';
+
+					evt.preventDefault();
+				}
+
+				document.addEventListener('mousemove',img.mousemoveHandler);
+
+			});
+
+			document.addEventListener('mouseup',function(){
+				document.removeEventListener('mousemove',img.mousemoveHandler);
+			});
+		}
+	</script>
+</head>
+<body>
+
+	<img src="img/big_4.jpg" alt="">
+</body>
+</html>

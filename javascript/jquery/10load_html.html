@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09自定义事件</title>
+	<style>
+		.container{height:200px;background-color: #efefef;}
+	</style>
+	<script src="js/jquery-3.2.1.js"></script>
+	<script>
+		jQuery(function($){
+			$('#header').load('10header.html nav',function(){
+				$('nav').css('color','#f00')
+			});
+		})
+	</script>
+</head>
+<body>
+	<header id="header"></header>
+	<div class="container"></div>
+	<footer></footer>
+</body>
+</html>

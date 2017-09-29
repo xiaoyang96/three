@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* sass变量 用于编写整个项目所有公共变量 */
+.container { width: 1000px; margin: 0 auto; }
+
+.container .box { width: 300px; }
+
+.container .box2 { width: 200px; }
+
+.container .datalist ul { overflow: hidden; padding: 10px; }
+
+.container .datalist li { border-bottom: 1px dotted #ddd; }
+
+.container .datalist li.span { color: #f00; }
+
+.container .datalist li.price { color: #f00; font-size: 12px; border: 1px solid #ddd; }
+
+h1 { color: #58bc58; }
+
+.box { width: 200px; height: 100px; background-color: #f60; }
+
+.box:hover { background-color: #fc0; }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15创建5×5的二维数组</title>
+	<script>
+		/*
+			通过循环按顺序为一个5×5的二维数组arr赋1到25的自然数，然后输出该数组的左下半三角的和。试编程。
+		 */
+		
+		// 创建一个空数组
+		var arr = [];
+
+		// 遍历写入二维数组
+		var num = 0;
+		for(var i=0;i<5;i++){
+			var innerArr = [];
+			for(var j=0;j<5;j++){
+				num++;
+				innerArr.push(num);
+			}
+			arr.push(innerArr);
+		}
+
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

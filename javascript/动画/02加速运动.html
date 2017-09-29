@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01匀速运动</title>
+	<style>
+		.box{position:absolute;top:0;left:0;width:100px;height:100px;background-color: #f00;}
+		.box1{top:200px;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			var box = document.querySelector('.box1');
+			var box = document.querySelector('.box');
+
+			/*
+				加速运动
+			 */
+			var speed = 1;
+			
+			var timer = setInterval(()=>{
+				var left = box.offsetLeft;
+
+				left += speed++;
+
+				if(left >= window.innerWidth - box.offsetWidth){
+					left = window.innerWidth - box.offsetWidth;
+					clearInterval(timer);
+				}
+
+				box.style.left = left + 'px';
+			},20);
+
+
+			var box1 = document.querySelector('.box1');
+
+			var speed1 = 5;
+
+			var timer1 = setInterval(()=>{
+
+				var left = box1.offsetLeft;
+
+				left += speed1;
+
+				if(left >= window.innerWidth - box1.offsetWidth){
+					left = window.innerWidth - box1.offsetWidth;
+					clearInterval(timer1);
+				}
+
+				box1.style.left = left + 'px';
+			},20)
+		})
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box1 box"></div>
+</body>
+</html>

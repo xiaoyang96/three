@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03实时显示光标位置</title>
+	<style>
+		.box{width:200px;height:100px;background-color: #00f;}
+		.info{position:fixed;left:0;bottom:0;padding:10px;font-size:12px;color:#999;}
+	</style>
+	<script>
+		window.onload = function(){
+			var box= document.getElementsByClassName('box')[0];
+			var info= document.getElementsByClassName('info')[0];
+
+			// 给.box绑定鼠标移动事件
+			box.onmousemove = function(){
+				console.log(666)
+			}
+
+			/*// 给body绑定事件
+			document.body.onmousemove = function(){
+				console.log('body 666')
+			}
+
+			// 给html绑定事件
+			document.documentElement.onmousemove = function(){
+				console.log('html 666')
+			}*/
+
+			// 给document绑定事件
+			document.onmousemove = function(event){
+				// console.log('document 666')
+				console.log(event.clientX,event.clientY);
+
+				info.innerHTML = '<p>可视区域：' + event.clientX + ',' + event.clientY + '</p><p>电脑屏幕：' + event.screenX + ',' + event.screenY + '</p>';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="info">
+		
+	</div>
+</body>
+</html>

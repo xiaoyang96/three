@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>足球解说</title>
+	<style>
+		body{padding:50px;}
+		ul{list-style: none;padding:0;margin:0;}/*reset*/
+		#datalist{border:1px solid #ddd;padding:15px;}
+		#datalist li{padding:15px 5px;border-bottom:1px dotted #ccc;}
+		#datalist li h4{margin:0;}
+		#page span{display:inline-block;margin:5px;width:40px;line-height:1.8;text-align: center;background-color:#dfdfdf;color:#666;}
+		#page span.active{background-color:#fc0;color:#fff;}
+	</style>
+	<script src="js/ajax.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				分页获取数据
+					* 接口
+						* pageNo
+						* qty
+
+				知识点
+					* try..catch
+			 */
+			var datalist = document.querySelector('#datalist');
+			var page = document.querySelector('#page');
+
+			var pageNo = 1;
+			var qty = 5;
+
+			ajax({
+				url:'/api/football.php',
+				data:{
+					pageNo:pageNo,
+					qty:qty
+				},
+				success:function(res){
+					// 分页数量
+					page.innerHTML = '';
+					var pageQty = Math.ceil(res.total/qty);
+					for(var i=1;i<=pageQty;i++){
+						var span = document.createElement('span');
+						if(i==pageNo){
+							span.className = 'active';
+						}
+						span.innerText = i;
+
+						page.appendChild(span);
+					}
+
+					// 数据写入
+					var ul = document.createElement('ul');
+					ul.innerHTML = res.data.map(item=>{
+						return `<li>
+							<h4>${item.name}</h4>
+							<p>${item.content}</p>
+						</li>`
+					}).join('');
+					
+					datalist.innerHTML = '';
+					datalist.appendChild(ul);
+				}
+			})
+
+			ajax({
+				url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+				type:'jsonp',
+				jsonpCallbackName:'cb',
+				data:{
+					json:1,
+					wd:'html5'
+				},
+				success:function(res){
+					console.log(res)
+				}
+			})
+
+
+			// 点击页码请求响应数据
+			page.onclick = function(e){
+				e = e || window.event;
+				var target = e.target || e.srcElement;
+				if(target.tagName.toLowerCase() === 'span'){
+
+					pageNo = target.innerText;
+					xhr.open('get',`/api/football.php?pageNo=${pageNo}&qty=${qty}`,true);
+					xhr.send();
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="datalist"></div>
+	<div id="page"></div>
+</body>
+</html>

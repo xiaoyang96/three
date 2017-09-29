@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07获取原型对象</title>
+	<script>
+		// 构造函数
+		function Person(name,age){
+			/*
+				1、var obj = {}
+				2、将this指向obj
+				3、执行代码
+				4、返回obj
+			 */
+			this.name = name;
+			this.age = age
+		}
+
+		// 获取原型对象
+		// * 通过构造函数获取
+		// * 通过实例获取
+		// 		* __proto__
+		// 		* Object.getPrototypeOf(实例);
+		Person.prototype
+
+		// 实例
+		var p1 = new Person('吴京',43);
+
+		// 浏览器私有属性
+		// __proto__
+		console.log(p1.__proto__);
+		Object.getPrototypeOf(p1);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

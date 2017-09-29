@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11style属性</title>
+	<style>
+		#box{background-color:#f00;height:100px;width:100px;}
+		div#box{background-color: blue;}
+
+		#box::before{
+			content:'$';
+			color:#f60;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				* box.style：获取/设置的是内联样式
+				* getComputedStyle(ele,伪元素)
+					* 全局方法
+					* 得到计算后的样式
+				* ie8-：currentStyle
+			 */
+			var box = document.getElementById("box");
+
+			// box.style.backgroundColor = '#0f0';
+
+			console.log(box.style.backgroundColor);
+
+
+			// 获取非内联样式
+			// 
+			// var bgColor = getComputedStyle(box).backgroundColor;
+			var bgColor = getComputedStyle(box)['background-color'];
+			console.log(bgColor);
+
+			// 伪元素样式
+			var pseudo = getComputedStyle(box,'::before');
+			console.log(pseudo.color)
+
+			// ie8-
+			// box.currentStyle.backgroundColor
+			// box.currentStyle['background-color']
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

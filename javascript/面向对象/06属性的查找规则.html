@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06属性的查找规则</title>
+	<script>
+		/*
+			属性的查找规则
+			 1、先从当前对象查找，找到则使用
+			 2、往当前对象的原型对象查找，找到则使用
+			 3、往原型对象的原型对象查找，依此类推...
+			 4、直到Object的原型对象发（Object.prototype）,如果在Object的原型中还是找不到，则返回undefined
+		 */
+		
+		
+		// 构造函数
+		function Student(name, age){
+		    this.name = name;
+		    this.age = age;
+		    this.sayName = function(){alert(this.name);};
+		}
+
+		// 原型对象
+		// 给原型对象添加属性/方法
+		Student.prototype.type = '人类';
+		Student.prototype.init = function(){}
+
+		// 实例
+		var s1 = new Student("王铁锤", 18);
+		s1.constructor;//Student
+
+
+		var s2 =  new Student('xxx',28);
+		s2.type;//人类
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

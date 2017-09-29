@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06字符串调用方法的原理</title>
+	<script>
+		var str1 = 'my name';
+		str1.toUpperCase();
+
+		// 原理
+		// 1.把字符串转成临时对象：var tem = new String(str1)
+		// 2.调用方法并返回结果：tem.toUpperCase()
+		// 3.删除临时对象
+
+		var str2 = new String('my name');
+		str2.toUpperCase();
+
+		console.log(str1,str2)
+
+
+		
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

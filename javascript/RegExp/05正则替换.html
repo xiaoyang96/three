@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05正则替换</title>
+    <script>
+        /*
+            style
+            script
+         */
+        var str = '<script>alert(111)dsfksmjlj;askdfconsole.log<\/script>';
+
+        var res = str.replace(/<(script|style)[^>]*>([\w\W]*)<\/\1>/,'$2');
+
+        console.log(res);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

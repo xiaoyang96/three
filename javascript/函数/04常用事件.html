@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04常用事件</title>
+	<style>
+		#box{width:200px;height:100px;background: #f60;transition:background-color 0.5s;}
+	</style>
+	
+</head>
+<body>
+	<div id="box">
+		
+	</div>
+	<script>
+		// 通过js绑定事件的方式
+		// 事件的触发：一瞬间
+		var box = document.getElementById('box');
+
+		function clickHandler(){
+			console.log('click');
+			box.style.backgroundColor = '#f00';
+		}
+
+		// 给box添加单击事件
+		box.onclick = clickHandler;
+
+		// 给box添加双击事件
+		box.ondblclick = function dblclickHandler(){
+			console.log('双击666');
+		}
+
+		// 给box添加鼠标移入事件
+		// 匿名函数：没有名字的函数
+		box.onmouseover = function(){
+			console.log('mouseover');
+			box.style.backgroundColor = '#00b';
+		}
+
+
+		// 给box添加鼠标离开事件
+		box.onmouseout = function(){
+			box.style.backgroundColor = '#f60';
+		}
+
+		// 修改css样式
+		// box.style
+	</script>
+</body>
+</html>

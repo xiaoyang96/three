@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15一元运算</title>
+	<script>
+		var num = 10;
+
+		// num = num + 1;
+
+		// 简写
+		// num += 1;
+
+		// 简写
+		// 返回值
+		// 后置++
+		// var result = num++;//num变成11，返回值：+1前的值（10）
+
+		console.log('num++返回值：'+num++);
+		console.log('num的值：'+num);
+
+
+		// 返回值
+		// console.log(result);
+
+		var num2 = 100;
+		var res2 = num2++ + num2++ + num2;//303
+		// 		   100	 + 101 + 102
+		console.log(res2);
+
+		var num3 = 100;
+		var res3 = num3++ + num3-- + num3++;//301
+		// 		   100	  + 101	   + 100
+
+
+		// 前置++
+		var num4 = 100;
+		var res4 = ++num4;//num4变成101,返回值：+1后的值
+		console.log(res4);//101
+
+		var num5 = 100;
+		var res5 = ++num5 + num5;//202
+		//		   101	  + 101
+
+		var num6 = 100;
+		var res6 = ++num6 + --num6 + num6;//301
+		//		   101	  + 100	   + 100
+
+		// 综合
+		var k=0; 
+		var res = k++ + ++k + k + k++;//6
+		//		  0	  + 2	+ 2 + 2
+		console.log('综合:'+res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

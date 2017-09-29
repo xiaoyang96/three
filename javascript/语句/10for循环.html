@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09for循环</title>
+	
+</head>
+<body>
+	<h4>打印1~100的7的倍数</h4>
+	<div id="output1"></div>
+
+	<h4>打印1~100的7的倍数和带7的数</h4>
+	<div id="output2"></div>
+
+	<script>
+		/*
+			for循环
+			格式:
+			for(变量初始化;条件;变量更新){
+				//条件成立执行这里的代码
+			}
+		 */
+		
+		// 获取页面原生
+		var output1 = document.getElementById('output1');
+		var output2 = document.getElementById('output2');
+		
+		// 打印1~100的7的倍数和带7的数
+
+		// 用于存放结果的变量
+		var res = '';//7,14,21,28,35..
+
+		for(var num=1;num<=100;num++){
+			
+			if(num%7===0){//7,14
+				// document.write(num + ', ');
+				res = res + num + ', ';
+			}
+		}
+
+		// 把结果写入#output1
+		output1.innerHTML = res;
+
+
+		// 打印1~100的7的倍数和带7的数
+		// 7,17,27,37,37,57,67,70~79,87,97
+		var res2 = '';
+		for(var num=100;num>0;num--){
+			// // 7的倍数
+			// if(num%7===0){
+			// 	res2 += num + ', ';
+			// }
+
+			// 带7的数
+			// 思路：把个位和十位拆开
+
+			// 个位
+			var g = num%10;
+
+			// 十位
+			var s = parseInt(num/10);
+
+			if(g===7 || s===7 || num%7===0){
+				res2 += num + ', '
+			}
+
+		}
+
+		output2.innerHTML = res2;
+	</script>
+</body>
+</html>

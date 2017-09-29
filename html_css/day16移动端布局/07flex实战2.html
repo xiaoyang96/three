@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07flex实战2</title>
+	<style>
+		div span{background-color: #efefef;border-radius:5px;min-width:50px;height:50px;margin:5px;text-align:center;line-height:50px;}
+		.container{height:500px;display:flex;flex-wrap:wrap;}
+		.container >div{display:flex;width:100%;}
+		.item1 span{flex:1;}
+		.item2 span{flex:1;}
+		.item3 span{flex:1;}
+		.item4 span:first-child{flex-basis:50%;background-color: #f00;}
+		.item4 span:nth-child(2){flex:1;}
+		.item4 span:nth-child(3){flex:1;}
+
+		.item5 span:nth-child(1){flex:1;}
+		.item5 span:nth-child(2){width:33.333333%;}
+
+		.item6 span:nth-child(1){width:25%;}
+		.item6 span:nth-child(2){flex:1;}
+		.item6 span:nth-child(3){width:33.333333%;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="item1">
+			<span>1/2</span>
+			<span>1/2</span>
+		</div>
+		<div class="item2">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="item3">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="item4">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="item5">
+			<span></span>
+			<span></span>
+		</div>
+		<div class="item6">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+</body>
+</html>

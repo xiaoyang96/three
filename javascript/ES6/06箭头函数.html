@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06箭头函数</title>
+	<script>
+		/*
+			箭头函数
+				* 零个参数用 () 表示
+					* 省略function关键字
+					* 省略{}
+				* 一个参数
+					* 省略function关键字
+					* 省略()
+					* 省略{}
+					* 省略return（如果有）
+				* 多个参数
+		 */
+		var show = function(){
+			// console.log('show');
+			return 100;
+		}
+
+		// 零个参数用 () 表示
+		// var show = ()=>{console.log('show');}
+		var show = ()=>100;
+
+
+		// 函数只有一个参数（可省略括号）
+		//传统函数写法
+		var test = function(x){
+		    return x+2;
+		}
+		var test = x=>x+2;
+
+
+		// 多个参数
+		var test2 = function(x,y){
+		    return x+y;
+		}
+		var test2 = (x,y)=>x+y;
+
+
+		// 函数体内有多行代码
+		var test3 = function(x,y){
+			x = x*x;
+			y = y*y;
+
+			return x + y;
+		}
+
+		var test3 = (x,y)=>{
+			x = x*x;
+			y = y*y;
+
+			return x + y;
+		}
+
+		// 返回一个对象
+		// ES6中的规则是，紧随箭头的{被解析为块的开始，而不是对象的开始
+		var test4 = function(name,age){
+			return {name:name,age:age}
+		}
+		var test4 = (name,age)=>({name:name,age:age});
+
+
+
+		// 箭头函数的应用
+		var arr = [10,20,30];
+		arr.forEach(function(item){
+
+		});
+		arr.forEach(item=>{
+
+		})
+
+		arr.map(function(item){
+			return item*item
+		});
+		arr.map(item=>item*item)
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

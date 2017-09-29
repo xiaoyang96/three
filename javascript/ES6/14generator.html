@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14generator生成器</title>
+	<script>
+		function show(){
+			var num = 100;
+			var res = 200;
+
+			return num + res;
+		}
+
+		show();
+
+
+		// 生成器
+		function* showMsg(){
+			yield 10;//next执行后，会暂停
+
+			yield 20;
+
+			yield 30;
+
+			return 40;//终止函数的执行
+		}
+
+		// 调用生成器函数不会执行内部代码
+		// 而是返回一个对象
+		var g = showMsg();
+		console.log(g);
+
+		// g.next();//得到一个yield返回值组成的对象
+
+		/*function* tomCat(a,b,c){
+			if(a){
+				yield 
+			}
+		}*/
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

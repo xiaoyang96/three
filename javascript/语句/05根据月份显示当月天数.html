@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05根据月份显示当月天数</title>
+</head>
+<body>
+	<input type="text" id="month">
+	<button onclick="showDays()">查看天数</button>
+	<div id="output"></div>
+	<script>
+		/*
+			根据月份显示当月天数
+			思路：
+			1、获取输入框元素
+			2、获取输入的值
+			3、根据月份判断天数
+		 */
+		
+		// 1、获取输入框元素
+		var month = document.getElementById('month');
+		var output = document.getElementById('output');
+
+
+		// 声明一个查看天数的函数
+		function showDays(){
+			// if..else方式
+			/*// 2、获取输入的值
+			var _month = month.value;//String
+
+			// 3、根据月份判断天数
+			if(_month == 1 || _month == 3 || _month == 5 || _month == 7 || _month == 8 || _month == 10 || _month == 12){
+				output.innerHTML = _month + '月有31天';
+			}else if(_month == 2){
+				output.innerHTML = _month + '月有28天';
+			}else if(_month == 4 || _month == 6 || _month == 9 || _month == 11){
+				output.innerHTML = _month + '月有30天';
+			}else{
+				output.innerHTML = '请输入正确的月份';
+			}*/
+
+			// switch方式
+			// case穿透
+			var _month = Number(month.value);//String
+
+			switch(_month){
+				case 1://恒等===
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12:
+					output.innerHTML = _month + '月有31天';
+
+					// 跳出switch,代码不会继续往下执行
+					break;
+				case 2:
+					output.innerHTML = _month + '月有28天';
+					break;
+				case 4:
+				case 6:
+				case 9:
+				case 11:
+					output.innerHTML = _month + '月有30天';
+					break;
+				default:
+					output.innerHTML = '输入的月份不合法';
+
+			}
+		}
+	</script>
+</body>
+</html>

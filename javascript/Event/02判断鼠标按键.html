@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01event对象的获取</title>
+	<style>
+		.box{width:200px;height:100px;background-color: #00f;font-size:30px;line-height:100px;text-align:center;color:#fff;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				event对象
+					* button
+					* 光标位置
+						* 
+			 */
+			var box = document.getElementsByClassName('box')[0];
+
+			box.onmousedown = function(event){
+				console.log(event.button);
+				if(event.button === 0){
+					box.innerHTML = '左键';
+				}else if(event.button === 1){
+					box.innerHTML = '滚轮';
+				}else if(event.button === 2){
+					box.innerHTML = '右键'
+				}
+			}
+
+
+			
+
+		}
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

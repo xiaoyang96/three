@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态生成表格并实现隔行变色</title>
+	<style>
+		table{border:1px solid #ddd;border-collapse: collapse;}
+		th,td{padding:5px 10px;border:1px solid #ddd;}
+		tr.even{background-color: #efefef;}
+	</style>
+	<script>
+		window.onload = function(){
+			var datalist = document.getElementsByClassName('datalist')[0];
+
+			var table = document.createElement('table');
+			var tbody = document.createElement('tbody');
+			table.appendChild(tbody);
+
+			for(var i=0;i<10;i++){
+				// 创建行
+				var tr = document.createElement('tr');
+
+				// 隔行换色
+				if(i%2===0){
+					tr.className = 'even';
+				}
+
+				// 行号
+				var firtTd = document.createElement('td');
+				firtTd.innerHTML = i+1;
+				tr.appendChild(firtTd);
+
+				for(var j=0;j<6;j++){
+					// 创建列
+					var td = document.createElement('td');
+					td.innerHTML = '单元格' + (i+1) + (j+1);
+					tr.appendChild(td);
+				}
+				// 添加删除按钮
+				var delTd = document.createElement('td');
+				var delBtn = document.createElement('button');
+				delBtn.className = 'btnDel';
+				delBtn.innerHTML = '&times;';
+				delTd.appendChild(delBtn);
+				tr.appendChild(delTd);
+
+				tbody.appendChild(tr);
+			}
+
+			datalist.appendChild(table);
+
+			// 删除行
+			var delButtons = datalist.getElementsByClassName('btnDel');
+
+			// 给每个按钮绑定事件
+			for(var i=0;i<delButtons.length;i++){
+				delButtons[i].onclick = function(){
+					// this
+					
+					if(confirm('你真的忍心删除吗？')){
+						// 通过节点关系获取父级tr
+						var currentTr = this.parentNode.parentNode;
+						currentTr.parentNode.removeChild(currentTr);
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>动态生成表格并实现隔行变色</h1>
+	<div class="datalist"></div>
+</body>
+</html>

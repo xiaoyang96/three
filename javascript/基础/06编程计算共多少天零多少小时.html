@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06编程计算共多少天零多少小时</title>
+	<script>
+		/*
+			为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+		 */
+		
+		// 战士连续作战时间
+		var total = 89;
+
+		// 剩余小时数
+		var hours = total%24;
+
+		// 剩余天数
+		// var days = (total-hours)/24;//Number
+
+		// 取整：获取数字中的整数部分
+		// parseInt()
+		var days = parseInt(total/24);
+
+		// 字符串拼接
+		alert('为抵抗洪水，战士连续作战89小时，共计' + days + '天零'+hours+'小时');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

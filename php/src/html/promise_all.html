@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise_all</title>
+
+	<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		/*
+			api1: api/person_name.php 人名
+			api2: api/person_age.php 年龄
+			api2: api/person_hobby.php 爱好
+
+			解决方案：
+				* 嵌套（缺点：维护困难）
+				* 同步请求（缺点：堵塞代码的执行）
+				* Promise
+		 */
+		
+		var output = document.querySelector('#output');
+		
+		
+		var pro_name = new Promise(function(resolve,reject){
+			var xhr_name = new XMLHttpRequest();
+			xhr_name.onload = function(){
+				var name = xhr_name.responseText;
+				console.log(name);
+				resolve(name);
+			}
+			xhr_name.open('get','/api/person_name.php',true);
+			xhr_name.send();
+		})
+		
+
+		var pro_age = new Promise(function(resolve,reject){
+			var xhr_age = new XMLHttpRequest();
+			xhr_age.onload = function(){
+				var age = xhr_age.responseText;
+				console.log(age);
+				resolve(age);
+			}
+			xhr_age.open('get','/api/person_age.php',true);
+			xhr_age.send();
+		})
+
+
+		var pro_hobby = new Promise(function(resolve,reject){
+			var xhr_hobby = new XMLHttpRequest();
+			xhr_hobby.onload = function(){
+				var hobby = xhr_hobby.responseText;
+				console.log(hobby);
+				resolve(hobby);
+			}
+			xhr_hobby.open('get','/api/person_hobby.php',true);
+			xhr_hobby.send();
+		});
+
+		// 
+		Promise.all([pro_hobby,pro_name,pro_age]).then(function(data){
+			output.innerHTML = data[1] + ',' + data[2] + ',' + data[0];
+		});
+
+		Promise.race([pro_hobby,pro_name,pro_age]).then(function(data){
+			console.log('race:',data);
+		})
+		
+		
+	})
+
+
+
+	</script>
+</head>
+<body>
+	<h1>显示个人信息</h1>
+	<div id="output"></div>
+</body>
+</html>

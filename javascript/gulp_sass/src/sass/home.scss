@@ -1,0 +1,16 @@
+@import 'var';
+.container{
+	width:1000px;margin:0 auto;
+	.box{width:300px;}
+	.box2{width:200px;}
+	.datalist{
+		ul{overflow:hidden;padding:10px;}
+		li{border-bottom:1px dotted #ddd;}
+		li.span{color:#f00;}
+		li.price{color:#f00;font-size:12px;border:1px solid #ddd;}
+	}
+}
+
+h1{color:#58bc58;}
+.box{width:200px;height:100px;background-color:#f60;}
+.box:hover{background-color:#fc0;}

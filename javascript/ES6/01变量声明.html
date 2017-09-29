@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01变量声明</title>
+	<script>
+		/*
+			let 代码块内的变量声明
+				1）变量声明不会提升
+				2）块级作用域
+				3）let不允许相同作用域内多次声明同一变量
+		 */
+		
+		var num = 100;
+
+		if(num>90){
+			var res = '很好';
+			let result = '非常好';
+		}
+
+		console.log(res);
+
+		// 报错3：块级作用域
+		// console.log(result);
+
+		function show(){
+			console.log('num:',num);
+
+			// 报错1：变量声明不会提升
+			// console.log('num2:',num2);
+			var num = 100;
+			let num2 = 200;
+			var num = 1000;
+
+			// 报错2：let不允许相同作用域内多次声明同一变量
+			let num2 = 2000;
+		}
+
+		show();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

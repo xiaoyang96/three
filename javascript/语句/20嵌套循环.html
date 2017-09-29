@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>20嵌套循环</title>
+	<script>
+		// index
+		wrap:for(var i=0;i<10;i++){
+
+			inner:for(var j=0;j<10;j++){
+				if(i===5){
+					// break;//跳出《当前》循环
+					break wrap;
+				}
+				console.log(i,j)
+			}
+		}
+
+		/*
+			i=0
+				j=0
+				j=1
+				j=2
+				j=3
+				j=4
+				j=5
+				j=6
+				j=7
+				j=8
+				j=9
+			i=1
+				j=0
+				j=1
+				j=2
+				j=3
+				j=4
+				j=5
+				j=6
+				j=7
+				j=8
+				j=9
+			i=2
+				j=0
+				j=1
+				j=2
+				j=3
+				j=4
+				j=5
+				j=6
+				j=7
+				j=8
+				j=9
+		 */
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

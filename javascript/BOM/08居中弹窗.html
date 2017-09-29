@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08居中弹窗</title>
+	<style>
+		.popover{position:absolute;width:600px;height:300px;border:1px solid #ddd;}
+		.popover header{position:relative;border-bottom:1px solid #ddd;}
+		.popover h4{margin:0;padding:10px;}
+		.popover .btn-close{position:absolute;right:0;top:0;padding:10px;}
+		.popover .btn-close:hover{background-color: #f00;color:#fff;}
+		.popover .content{padding:15px;min-height:200px;}
+	</style>
+	<script>
+		/*
+			居中弹窗
+		 */
+		window.onload = function(){
+			var popover = document.getElementById('popover');
+
+			autoCenter();
+
+			// 改变窗口大小事件
+			// onresize
+			window.onresize = autoCenter;
+
+			function autoCenter(){
+				// window.location.reload();
+
+				// 计算left,top
+				var left = (window.innerWidth - 600)/2;
+				var top = (window.innerHeight - 300)/2;
+
+				// 居中定位
+				popover.style.left = left + 'px';
+				popover.style.top = top + 'px';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="popover" id="popover">
+		<header>
+			<h4>弹窗标题</h4>
+			<span class="btn-close">&times;</span>
+		</header>
+		<div class="content">
+			弹窗内容
+		</div>
+	</div>
+</body>
+</html>

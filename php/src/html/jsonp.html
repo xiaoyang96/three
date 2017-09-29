@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp原理</title>
+	<link rel="stylesheet" href="">
+	<style>
+		/*iframe{position:absolute;top:0;right:0;bottom:0;left:0;border:none;width:100%;height:100%;}*/
+	</style>
+	
+	<script>
+		/*
+			可获取其他服务器内容的标签
+			* iframe
+			* link
+			* script
+			* img
+
+			jsonp不是ajax请求
+		 */
+		
+		// 声明一个全局函数
+		function niHao(data){
+			console.log(data);
+
+			// 请求成功后删除script
+			script.parentNode.removeChild(script);
+		}
+
+		// 生成script标签并写入head
+		var script = document.createElement('script');
+		script.src = 'http://localhost:10086/person.php?cb=niHao';
+		document.head.appendChild(script);
+
+	</script>
+	<!-- <script src="http://localhost:10086/person.php?cb=niHao"></script> -->
+</head>
+<body>
+	<!-- <iframe src="http://www.baidu.com"></iframe> -->
+</body>
+</html>

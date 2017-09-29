@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01函数的声明</title>
+
+</head>
+<body>
+	<button id="btn">执行函数</button>
+	<script>
+		// 函数的声明
+		// 仅仅是将函数保存到内存中
+		function add(){
+			var num1 = 10;
+			var num2 = 20;
+
+			console.log(num1 + num2);
+		}
+
+		// 执行函数
+		// 1.手动调用
+		// add();
+
+		// 2.事件驱动
+		// 点击按钮时才执行add
+		var btn = document.getElementById('btn');
+
+		// 给元素添加事件
+		// 等效于：<button onclick="add()"></button>
+		btn.onclick = add;
+	</script>
+</body>
+</html>

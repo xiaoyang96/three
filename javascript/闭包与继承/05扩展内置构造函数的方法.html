@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05扩展内置构造函数的方法</title>
+	<script>
+	/*
+		* Number
+		* String
+		* Boolean
+		* Array
+		* Object
+		* Function
+		* RegExp
+		...
+	 */
+		var str = '  lao xie  ';
+		var str = new String('  lao xie  ');
+
+		// 扩展String的原型对象
+		if(!String.prototype.trim){
+			String.prototype.trim = function(){
+				return this.replace(/^\s+|\s+$/g,'');
+			}
+		}
+
+
+		var arr = new Array();
+		var arr = []
+
+		
+
+		console.log(str.trim());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

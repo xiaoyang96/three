@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个函数，计算任意两个数字的加减乘除</title>
+	<script>
+		/*
+			封装一个函数，计算任意两个数字的加减乘除
+		 */
+		
+		window.onload = function(){
+			var num1 = document.getElementById('num1');
+			var num2 = document.getElementById('num2');
+			var op = document.getElementById('op');
+			var btnCalc = document.getElementById('btnCalc');
+			var output = document.getElementById('output');
+
+			// 给按钮绑定事件
+			btnCalc.onclick = function(){
+				// 先获取num1,num2,操作符
+				var _num1 = num1.value*1;
+				var _num2 = num2.value*1;
+				var _op = op.value;
+
+				/*// 用于存放结果
+				var res;
+
+				switch(_op){
+					case '+':
+						res = _num1 + _num2;
+						break;
+					case '-':
+						res = _num1 - _num2;
+						break;
+					case '*':
+						res = _num1 * _num2;
+						break;
+					case '/':
+						res = _num1 / _num2;
+						break;
+					case '%':
+						res = _num1 % _num2;
+						break;
+				}*/
+
+				// 利用函数的参数
+				// * 形参：定义函数时的参数
+				// * 实参：调用函数时的参数
+				calc(_num1,_num2,_op);			
+			}
+
+			function calc(_num1,_num2,_op){
+				// var _num1,_num2,_op;//形参
+				
+				var res;
+				switch(_op){
+					case '+':
+						res = _num1 + _num2;
+						break;
+					case '-':
+						res = _num1 - _num2;
+						break;
+					case '*':
+						res = _num1 * _num2;
+						break;
+					case '/':
+						res = _num1 / _num2;
+						break;
+					case '%':
+						res = _num1 % _num2;
+						break;
+				}
+
+				console.log(res);
+
+				output.innerHTML = res;	
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="num1">
+	<select id="op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">&times;</option>
+		<option value="/">÷</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" id="num2">
+	<button id="btnCalc">计算</button>
+	<p>计算结果：<span id="output"></span></p>
+</body>
+</html>

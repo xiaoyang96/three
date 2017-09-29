@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            *{
+                padding:0;
+                margin:0;
+                box-sizing: border-box;
+            }
+            body{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            table{
+                text-align:center;
+            }
+            td{
+                border:1px solid #aaa;
+                height:100px;
+                width:80px;
+                font-size:26px;
+                color:#333;
+                border-radius:5px;
+                transition:all .3s;
+            }
+            td:hover{
+                font-size:30px;
+                font-weight:600;
+            }
+            input{
+                width:464px;
+                outline:none;
+                background:#fff;
+                border:0 none;
+                border:1px solid #aaa;
+                text-align:right;
+            }
+            input:nth-child(1){
+                height:40px;
+                margin-top:100px;
+                border-bottom:0 none;
+                font-size:20px;
+                border-radius:5px 5px 0 0 ;
+            }
+            input:nth-child(2){
+                height:60px;
+                border-top:0 none;
+                font-size:40px;
+                border-radius:0 0 5px 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" disabled value="0"/>
+        <input type="text" disabled value="0"/>
+        <table cellspacing="16">
+            <tr>
+                <td id="btn_1">7</td>
+                <td id="btn_2">8</td>
+                <td id="btn_3">9</td>
+                <td id="btn_4">/</td>
+                <td id="btn_5">%</td>
+            </tr>
+            <tr>
+                <td id="btn_6">4</td>
+                <td id="btn_7">5</td>
+                <td id="btn_8">6</td>
+                <td id="btn_9">*</td>
+                <td id="btn_18">C</td>
+            </tr>
+            <tr>
+                <td id="btn_11">1</td>
+                <td id="btn_12">2</td>
+                <td id="btn_13">3</td>
+                <td id="btn_14">-</td>
+                <td id="btn_10" rowspan="2">=</td>
+            </tr>
+            <tr>
+                <td id="btn_15" colspan="2">0</td>
+                <td id="btn_16">.</td>
+                <td id="btn_17">+</td>
+            </tr>
+        </table>
+
+
+        <script type="text/javascript" src="javascript/js_2.js"></script>
+    </body>
+</html>

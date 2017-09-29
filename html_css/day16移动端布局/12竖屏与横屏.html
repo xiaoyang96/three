@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12竖屏与横屏</title>
+	<style>
+		/*
+			条件：
+				* and => 并且
+				* , => 或者
+				* not =>排除
+				* only =>只有
+		 */
+		@media (orientation:portrait){
+			.box img{display:block;width:100%;}
+		}
+
+		@media (orientation:landscape){
+			/*权重*/
+			.box{display:flex;}
+			.box img{flex:1;}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="images/g1.jpg" alt="">
+		<img src="images/g2.jpg" alt="">
+		<img src="images/g3.jpg" alt="">
+		<img src="images/g4.jpg" alt="">
+		<img src="images/g5.jpg" alt="">
+	</div>
+</body>
+</html>

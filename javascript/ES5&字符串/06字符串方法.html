@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的方法</title>
+	<script>
+		var str = '城市套路深，我要会农村';
+
+		// 读取
+		// 获取字符串中的某个字符
+		// 字符串的方法:chatAt(idx)
+		str.charAt(0);//城
+
+		// ES5中获取某个字符
+		// 与数组方式一样
+		str[0];//城
+
+		// 获取某个字符所在的索引
+		// indexOf()/lastIndexOf()
+		var msg = 'good good study day day up';
+
+		msg.indexOf('g');//0
+		msg.lastIndexOf('g');//5
+		msg.indexOf('good');//0
+		msg.indexOf('goods');//-1
+
+		// 判断字符串中是否存在某个字符
+		if(msg.indexOf('study')!=-1){
+
+		}
+
+
+		// 字符串的截取
+		// * slice() //支持负数
+		// * substring()
+		// * substr()
+		var msg2 = '床前明月光,疑是地上霜';
+		console.log(msg2.slice(0,5));//床前明月光
+		console.log(msg2.slice(0,-1));//
+
+
+		// 字符拆分
+		// split()
+		// 我，这，他，那
+		var str2 = '锄禾日当午，汗滴禾下土，谁知盘中餐，粒粒皆辛苦';
+		var arr = str2.split('禾');
+		console.log(arr);
+
+		// '锄禾我日当午，汗滴这禾下土，谁知那盘中餐，粒粒他皆辛苦';
+		// '一二这三四五，上山我打老虎，老虎他没在家，打倒那小松鼠';
+
+		// var str = 'a,b,cd,e,d,dfdf'.split(',')
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

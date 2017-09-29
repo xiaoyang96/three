@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15封装生成随机颜色函数</title>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementById('btn');
+			var myBody = document.getElementById('myBody');
+
+			// 页面加载完成后设置随机颜色
+			myBody.style.backgroundColor = randomColor();
+
+			// 点击按钮时设置随机颜色
+			btn.onclick = function(){
+				myBody.style.backgroundColor = randomColor();
+			}
+		}
+	</script>
+</head>
+<body id="myBody">
+	<button id="btn">随机颜色</button>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品详情</title>
+	<script>
+	window.onload = function(){
+		var goodsUrl = document.getElementById('goodsUrl');
+		var goodsName = document.getElementById('goodsName');
+		var price = document.getElementById('price');
+		var color = document.getElementById('color');
+		var memory = document.getElementById('memory');
+
+		/*
+			07goods.html?name=苹果iphone7%20plus&imgurl=img/ip7.jpg&price=4998&color=土豪金&memory=64
+		 */
+		var params = location.search.substring(1).split('&');
+		console.log(params);
+
+		// 遍历数据
+		params.forEach(function(item){
+			var arr = item.split('=');
+
+			// 解码
+			var val = decodeURI(arr[1])
+
+			if(arr[0] == 'name'){
+				goodsName.innerHTML = val;
+			}else if(arr[0] == 'imgurl'){
+				goodsUrl.src = val;
+			}else if(arr[0] == 'price'){
+				price.innerHTML = val;
+			}else if(arr[0] == 'color'){
+				color.innerHTML = val;
+			}else if(arr[0] == 'memory'){
+				memory.innerHTML = val;
+			}
+		});
+		
+	}
+	</script>
+</head>
+<body>
+	<div class="goods">
+		<img src="" id="goodsUrl">
+		<h1 id="goodsName">商品详情</h1>
+		<p class="price">价格：<span id="price"></span></p>
+		<p class="color">颜色：<span id="color"></span></p>
+		<p class="memory">容量：<span id="memory"></span></p>
+	</div>
+</body>
+</html>

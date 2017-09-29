@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab选项卡</title>
+    <style>
+    ul{list-style:none;padding:0;margin:0;}
+    .tab{position:relative;width:800px;margin:0 auto;}
+    .tab .header li{display:inline-block;padding:5px 15px;}
+    .tab .header li.active{font-weight:bold;color:#f60;}
+    .content{position:absolute;top:31px;left:0;padding:20px;width:800px;border:1px solid #ddd;background-color: #efefef;text-align:center;box-sizing: border-box;}
+    </style>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script>
+    	jQuery(function($){
+    		/*
+    			动画
+    				* show(time)/hide(time);
+    				* slideDown()/slideUp();
+    				* fadeIn()/fadeOut()
+    		 */ 
+    		
+    		$('.tab .header li').eq(0).addClass("active");
+    		// $('.tab .content').not(':first-of-type').hide();
+    		$('.tab .content').first().nextAll().hide();
+    		
+    		$('.tab').on('click','.header li',function(){
+    			// 获取当前对应索引值
+    			var idx = $(this).index();
+
+    			// 给当前高亮，去除其他高亮
+    			$(this).addClass('active').siblings('li').removeClass('active');
+
+    			$('.tab .content').eq(idx).fadeIn(1000).siblings('.content').fadeOut(1000);
+
+
+    		});
+    	})
+    </script>
+</head>
+
+<body>
+    <div class="tab">
+        <ul class="header">
+            <li>选项1</li>
+            <li>选项2</li>
+            <li>选项3</li>
+            <li>选项4</li>
+            <li>选项5</li>
+            <li>选项6</li>
+            <li>选项7</li>
+            <li>选项8</li>
+            <li>选项9</li>
+        </ul>
+        <div class="content"><img src="img/1.jpg"></div>
+        <div class="content"><img src="img/2.jpg"></div>
+        <div class="content"><img src="img/3.jpg"></div>
+        <div class="content"><img src="img/4.jpg"></div>
+        <div class="content"><img src="img/5.jpg"></div>
+        <div class="content"><img src="img/6.jpg"></div>
+        <div class="content"><img src="img/7.jpg"></div>
+        <div class="content"><img src="img/8.jpg"></div>
+        <div class="content"><img src="img/9.jpg"></div>
+    </div>
+    <div id="output"></div>
+</body>
+
+</html>

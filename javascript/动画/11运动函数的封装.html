@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11运动函数的封装</title>
+	<style>
+		.box{position:absolute;left:0;top:0;width:100px;height:100px;background-color: #f00;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				* 支持多属性同时运动
+				* 支持回调函数
+					* 所有动画完成后执行的函数
+					* 只执行一次，避免资源浪费
+			 */
+			var box = document.querySelector('.box');
+
+			/*animate(box,'left',400);
+			animate(box,'left',800);
+			animate(box,'width',800);*/
+			animate(box,{left:400,width:300,top:100,opacity:0.21},function(){
+				box.style.backgroundColor = '#58bc58';console.log(6666)
+			});
+		})
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

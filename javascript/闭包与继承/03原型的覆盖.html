@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03原型的覆盖</title>
+	<script>
+		
+
+		function Person(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+		}
+
+		// 原型对象添加
+		// constructor
+		Person.prototype.say = function(){
+			console.log('say')
+		}
+
+		var p1 = new Person('诸葛亮',18,'男');
+
+		// 原型的覆盖
+		Person.prototype = {
+			// 指向Person
+			// constructor:Person,
+
+			eat:function(){
+				console.log('eat');
+			},
+			sleep:function(){
+				console.log('sleap')
+			}
+		}
+
+		// 设置constructor
+		Object.defineProperty(Person.prototype,'constructor',{
+			value:Person
+		});
+
+		var p2 = new Person('刘备',50,'男');
+
+		
+		for(var attr in p2){
+			console.log(attr);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

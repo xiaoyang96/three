@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08继承</title>
+	<script>
+	/*
+		问题：
+			* 重复代码过多
+			* 不方便维护
+	 */
+		function Person(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+		}
+
+		// 原型
+		Person.prototype = {
+			say:function(){
+
+			},
+			study:function(){
+
+			}
+		}
+
+
+
+
+		function Man(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+		}
+
+		Man.prototype = {
+			say:function(){
+
+			},
+			study:function(){
+
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

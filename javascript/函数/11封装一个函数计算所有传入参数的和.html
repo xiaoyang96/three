@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个函数，计算所有传入参数的和</title>
+	<script>
+		/*
+			数组：可以保存多个数据的变量 
+			格式：var arr = [10,20,30]
+			* 索引：标识某个数据的位置
+				* 索引值从0开始
+				* 读取：arr[索引值]
+			* length:表示数组的长度
+		 */
+		var arr = [10,20,30];
+		//console.log(arr[2])
+
+		// 函数内部隐藏的对象（是一个类数组），保存着实参的信息
+		function sum(){
+			// console.log(arguments);
+			// var res = num1 + num2;
+			// console.log(res);
+
+			// 存放结果
+			var res = 0;
+
+			// 循环
+			for(var i=0;i<arguments.length;i++){
+				res += arguments[i]
+			}
+
+			console.log(res);
+		}
+
+		// sum(10,20);
+		// sum(12,11);
+		// sum(1,2,3);
+		sum(1,2,3,4,5,6,7,8,9);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

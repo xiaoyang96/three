@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14随机背景色表格</title>
+	<style>
+		table{border:1px solid #ddd;border-collapse: collapse;}
+		th,td{padding:5px 10px;border:1px solid #ddd;}
+		tr.even{background-color: #efefef;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			var datalist = document.getElementsByClassName('datalist')[0];
+			var row = 10;
+			var col = 6;
+
+			var table = document.createElement('table');
+
+			for(var i=0;i<row;i++){
+				var tr = table.insertRow(i);
+
+				// 随机背景色
+				tr.style.backgroundColor = randomColor();
+
+				for(var j=0;j<col;j++){
+					var td = tr.insertCell(j);
+					td.innerText = '单元格' + (i+1) + (j+1);
+				}
+
+				// 删除按钮
+				tr.insertCell(j).innerHTML = '<button class="btnDel">&times;</button>';
+
+				// 添加行号
+				tr.insertCell(0).innerText = i+1;
+			}
+
+			datalist.appendChild(table);
+			// datalist.innerHTML = table;
+
+			// 获取所有的button.btnDel
+			// 绑定事件，删除当前行
+			var btnDels = datalist.getElementsByClassName('btnDel');
+
+			for(var i=0;i<btnDels.length;i++){
+				// btnDels[i].idx = i;
+				btnDels[i].onclick = function(){
+					var currentTr = this.parentNode.parentNode;
+
+					var idx = currentTr.rowIndex;
+
+					table.deleteRow(idx);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="datalist"></div>
+</body>
+</html>

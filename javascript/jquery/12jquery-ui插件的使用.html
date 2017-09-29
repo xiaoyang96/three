@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12jquery-ui插件的使用</title>
+	<link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.css">
+	<script src="js/jquery-3.2.1.js"></script>
+	<script src="lib/jquery-ui-1.12.1/jquery-ui.js"></script>
+	<style>
+		.box{width:100px;height:100px;background-color: #f00;}
+		.container{width:800px;height:300px;border:1px solid #ddd;}
+	</style>
+	<script>
+		jQuery(function($){
+			$('.box').draggable({containment:'.container'})
+		});
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+
+	<div class="container">
+		
+	</div>
+</body>
+</html>

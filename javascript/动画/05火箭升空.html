@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05火箭升空</title>
+	<style>
+		body{background-color: #16283b;overflow: hidden;}
+		img{position: absolute;top:100%;left:50%;width:100px;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				* 先加速
+				* 后减速
+			 */
+			var rocket = document.querySelector('img');
+
+			var speed = 0;
+			var timer = setInterval(()=>{
+				var top = rocket.offsetTop;
+
+				if(top>=window.innerHeight/2){
+					// 先加速
+					top -= speed++;
+				}else{
+					top -= speed--;
+				}
+
+				if(speed==0){
+					clearInterval(timer);
+				}
+
+				
+
+				rocket.style.top = top + 'px';
+			},20);
+		})
+	</script>
+</head>
+<body>
+	<img src="img/rocket.gif">
+</body>
+</html>

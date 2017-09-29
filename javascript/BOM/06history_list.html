@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06history列表页</title>
+	<style>
+		body{margin:0;}
+		header{display:flex;justify-content: space-between;align-items:center;padding:0 15px;height:60px;background:#5cb85c;}
+		header button{height:30px;width:30px;}
+		header h1{margin:0;font-size:26px;font-weight:normal;color:#fff;}
+	</style>
+	<script>
+		window.onload = function(){
+			var btnPrev = document.getElementById('prev');
+			var btnNext = document.getElementById('next');
+
+			// 绑定点击事件
+			btnPrev.onclick = function(){
+				history.back();
+			}
+
+			btnNext.onclick = function(){
+				history.forward();
+			}
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<button id="prev">&lt;</button>
+		<h1>列表页</h1>
+		<button id="next">&gt;</button>
+	</header>
+	<footer>
+		<ul>
+			<li><a href="06history.html">首页</a></li>
+			<li><a href="06history_list.html">列表</a></li>
+			<li><a href="06history_goods.html">详情</a></li>
+			<li><a href="06history_shopingcar.html">购物车</a></li>
+		</ul>
+	</footer>
+</body>
+</html>

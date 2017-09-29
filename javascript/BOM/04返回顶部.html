@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04返回顶部</title>
+	<style>
+		.toTop{
+			display:none;
+			position:fixed;bottom:10px;right:10px;
+			padding:10px;background-color: rgba(0,0,0,0.1);color:#333;
+		}
+	</style>
+	<script>
+	for(var i=1;i<1000;i++){
+		document.write('<p>我叫你'+i+'声逗比你敢答应吗？</p>');
+	}
+	window.onload = function(){
+		var toTop = document.getElementById("toTop");
+
+		toTop.onclick = function(){
+			// 先获取滚动条滚动过的距离
+			var scrollTop = window.scrollY;
+
+			var timer = setInterval(function(){
+				/*scrollTop -= 100;
+
+				// 停止定时器
+				if(scrollTop <= 0){
+					clearInterval(timer);
+
+					// 重置目标值
+					scrollTop =  0;
+				}
+
+				scrollTo(0,scrollTop);*/
+
+				if(window.scrollY <= 0){
+					clearInterval(timer);
+				}
+				scrollBy(0,-100);
+			},20);
+		}
+
+		// window的滚动事件
+		window.onscroll = function(){
+			console.log(666);
+
+			// 获取滚动条滚动过的距离
+			var srcollTop = window.scrollY;
+
+			// 判断滚动条滚动过的距离是否超过1000
+			// 显示返回顶部按钮
+			if(srcollTop>1000){
+				toTop.style.display = 'block';
+			}else{
+				toTop.style.display = 'none';
+			}
+		}
+	}
+		
+
+
+	</script>
+</head>
+<body>
+	<span id="toTop" class="toTop">返回顶部</span>
+</body>
+</html>

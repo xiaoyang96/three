@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09倒计时秒杀活动</title>
+	<style>
+		.price span{color:#f00;}
+	</style>
+	<script>
+	window.onload = function(){
+		/*
+			倒计时秒杀活动
+			1）指定结束时间，精确到秒
+			2）每隔一秒拿当前时间和结束时间进行比较，计算差值
+			3）根据时间差，显示倒计时格式时间
+				50=> 50
+				65=>1分05秒
+				3650=>1时0分50秒
+		 */
+
+		var countDown = document.getElementById('countDown');
+		var btnBuy = document.getElementById('btnBuy');
+
+		// 1）指定结束时间，精确到秒
+		var endTime = '2017/7/27 18:00:45';
+		var end = Date.parse(endTime);
+
+		// 2）每隔一秒拿当前时间和结束时间进行比较，计算差值
+		var timer = setInterval(function(){
+			var now = Date.now();
+
+			// 计算差值
+			var offset = Math.floor((end - now)/1000);
+
+			// 到达指定时间后
+			// * 停止定时器
+			// * 改变购买按钮
+			// * 隐藏倒计时
+			if(offset <= 0){
+				clearInterval(timer);
+				btnBuy.src = 'img/btn_buy.jpg';
+				countDown.style.display = 'none';
+				// return;
+			}
+
+			// 转成倒计时格式
+			var secLeft = offset%60;
+			var minLeft = Math.floor(offset/60)%60;
+			var hourLeft = Math.floor(offset/60/60);
+
+			countDown.innerHTML = '距离' + endTime + '还剩：' + hourLeft + '时' + minLeft + '分' + secLeft + '秒';
+		},1000);
+	}
+		
+
+	</script>
+</head>
+<body>
+	<h1>倒计时秒杀活动</h1>
+	<div class="goods">
+		<img src="img/g3.jpg">
+		<p class="price">
+			价格：<span>99.98</span>
+		</p>
+		<p id="countDown"></p>
+		<img src="img/btn_buy0.jpg" id="btnBuy">
+	</div>
+</body>
+</html>

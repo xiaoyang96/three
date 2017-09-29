@@ -1,0 +1,87 @@
+/*
+	* 变量
+	* 选择器嵌套
+		* & 表示父元素选择器
+	* 运算
+	* 引入其他sass文件
+		* import
+	*遍历
+		* @for $var from <start> through <end>（包含end值）
+    	* @for $var from <start> to <end>（不包含en值）
+	*继承
+		* @extend
+ */
+
+// 覆盖默认变量
+$borderColor:#ccc;
+
+// 引入其他sass文件
+// 后缀名可省略
+@import 'var';
+
+
+ul{padding:0;margin:0;list-style: none;}
+.datalist{
+	width:1000px;padding:10px;margin:0 auto;border:1px solid $borderColor;
+	ul{
+		overflow:hidden;
+		li{
+			float:left;margin:10px;width:200px;height:400px;border:1px solid $borderColor;
+			img{display:block;border:1px solid $borderColor;padding:10px;width:180px;height:180px;}
+			h4{font-size:16px;color:$highlight;}
+			p{
+				margin:10px 0;
+			}
+			p.price{
+				font-size:$smallFont;
+				span{
+					color:$highlight;
+					&::before{
+						content:'￥';
+					}
+				}
+			}
+			p.save{color:$mainColor;}
+
+			&:first-child{border-color:#f60;}
+		}
+	}
+}
+
+
+$dir:top;
+#box{border-#{$dir}:1px solid $borderColor}
+
+// 写一个h1-h6的字体大小
+// @for $var from <start> through <end>（包含end值）
+// @for $var from <start> to <end>（不包含en值）
+
+@for $i from 1 through 6{
+	h#{$i}{
+		font-size:(30/$i)px;
+	}
+}
+
+// @import,@keyframe,@font-face
+
+
+// 继承
+// @extend
+h1{font-size:30px;border-bottom:1px solid #ddd;padding:10px;color:#f60}
+
+.title{
+	@extend h1;
+	background-color:#efefef;
+	opacity:0.5;
+}
+
+
+// 内置函数
+// lighten($color,$percent)
+// darken($color,$percent)，$color颜色值，$percent百分比
+// percentage($value)：将一个不带单位的数转换成百分比值；
+
+#my-box{
+	width:200px;height:200px;background-color:$highlight;
+	&:hover{background-color:lighten($highlight,10%);color:#f00;}
+}

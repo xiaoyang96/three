@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05自动应答机器人</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.msg-list{width:600px;margin:0 auto;}
+		.msg-list ul{padding:10px;min-height:200px;overflow:hidden;border:1px solid #ddd;}
+		.msg-list li{float:left;clear:both;margin:10px 0;padding:5px;line-height:2;border-radius:5px;background-color:#efefef;}
+		.msg-list li.active{float:right;background-color:#fc0;color:#fff;}
+		.msg-list textarea{display:block;min-height:50px;margin:10px 0;width:100%;box-sizing: border-box;}
+	</style>
+
+	<script>
+		window.onload = function(){
+			// 1）获取元素节点
+			var msglist = document.getElementsByClassName('msg-list')[0];
+			var list = msglist.getElementsByTagName('ul')[0];
+			var msg = msglist.getElementsByTagName('textarea')[0];
+			var btn = msglist.getElementsByTagName('button')[0];
+
+			// 3）创建QA
+			var arr_q = ['你好','约吗']
+			var arr_a = ['他好我也好','叔叔，在哪约']
+
+			// 2）发送消息
+			// 给button绑定点击事件
+			btn.onclick = function(){
+				// 获取输入的内容
+				var _msg = msg.value;
+
+				// 创建li
+				var li = document.createElement('li');
+				li.innerHTML = _msg;
+				li.className = 'active';
+
+				// 把消息写入ul
+				list.appendChild(li);
+
+				// 清空并自动获得焦点
+				msg.value = '';
+				msg.focus();
+
+				// 4）自动回复
+				// 关键：判断输入的消息是否存在arr_q数组中
+				var idx = arr_q.indexOf(_msg);
+				if(idx>=0){
+					var aLi = document.createElement('li');
+					aLi.innerHTML = arr_a[idx];
+
+					// 1s后执行一次函数
+					setTimeout(function(){
+						list.appendChild(aLi);
+					},1000);
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="msg-list">
+		<h1>自动应答机器人</h1>
+		<ul></ul>
+		<textarea></textarea>
+		<button>提交</button>
+	</div>
+</body>
+</html>

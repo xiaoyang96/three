@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08能冒泡的事件</title>
+	<style>
+		#box{padding:20px;width:200px;height:200px;background-color: #f00;}
+		#box div{width:100px;height:100px;background-color: #fc0;}
+	</style>
+	<script>
+		window.onload = function(){
+			var box = document.getElementById('box');
+
+			var child = box.children[0];
+
+			// box.onmouseover = function(){
+			box.onmouseenter = function(){
+				console.log('box mouseover');
+			}
+
+			// child.onmouseover = function(){
+			child.onmouseenter = function(){
+				console.log('child mouseover');
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个显示隐藏页面元素的函数</title>
+	<style>
+		#box{width:200px;height:100px;background-color: #00b;}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<button id="btnShow">显示</button>
+	<button id="btnHide">隐藏</button>
+	<button id="btn">显示/隐藏</button>
+
+	<script>
+		// 获取元素
+		var box = document.getElementById('box');
+		var btnShow = document.getElementById('btnShow');
+		var btnHide = document.getElementById('btnHide');
+		var btn = document.getElementById('btn');
+
+		// 显示
+		btnShow.onclick = function(){
+			box.style.display = 'block';
+		}
+
+		// 隐藏
+		btnHide.onclick = function(){
+			box.style.display = 'none';
+		}
+
+		// 显示隐藏一体
+		/*btn.onclick = function(){console.log(box.style.display)
+			// 显示时隐藏
+			// style属性：得到的是内联样式
+			if(box.style.display === '' || box.style.display === 'block'){
+				box.style.display = 'none';
+			}else{
+				box.style.display = 'block';
+			}
+		}*/
+
+		var visible = true;
+		btn.onclick = function(){
+			if(visible){
+				box.style.display = 'none';
+				visible = false;
+			}else{
+				box.style.display = 'block';
+				visible = true;
+			}
+		}
+	</script>
+</body>
+</html>

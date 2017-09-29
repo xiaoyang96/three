@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取微博信息</title>
+	<style>
+		.datalist{margin:0 auto;line-height:2;}
+		.datalist li{position:relative;border-bottom:1px dotted #ddd;padding-right:100px;}
+		.datalist li span{position:absolute;right:0;top:0;margin:0 5px;padding:2px 5px 2px 20px;background:skyblue url(icon/com.svg) no-repeat 5px center;background-size:20px;border-radius: 5px;width:30px;text-align:center;color:#fff;}
+		.datalist li span.like{right:70px;background-image:url(icon/zan.svg);background-color:orange;}
+
+	</style>
+	<script>
+	document.addEventListener('DOMContentLoaded',()=>{
+		var datalist = document.querySelector('.datalist');
+
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState===4 && (xhr.status===200 || xhr.status === 304)){
+				var res = JSON.parse(xhr.responseText);console.log(res)
+
+				var ul = document.createElement('ul');
+				ul.innerHTML = res.map(item=>{
+					return `<li data-id="${item.id}">
+						<strong>${item.username}</strong>
+						<p>${item.content}</p>
+						<span class="like">${item.likecnt}</span>
+						<span class="comt">${item.comtcnt}</span>
+					</li>`;
+				}).join('');
+
+				datalist.appendChild(ul);
+			}
+		}
+		xhr.open('get','/api/weibo.php',true);
+		xhr.send();
+
+
+		var xhr_like = new XMLHttpRequest();
+		xhr_like.onreadystatechange = function(){
+			if(xhr.readyState===4 && (xhr.status===200 || xhr.status === 304)){
+
+			}
+		}
+
+		// 点赞
+		datalist.onclick = function(e){
+			e = e || window.event;
+			var target = e.target || e.srcElement;
+
+			if(target.className === 'like'){
+				// 获取当前数据对应的id
+				var id = target.parentNode.dataset.id;
+
+				target.innerText = ++target.innerText;
+
+				// get请求
+				// xhr_like.open('get','/api/weibo.php?type=like&id='+id,true);
+				// xhr_like.send(null);
+
+				// post请求
+				xhr_like.open('post','/api/weibo.php',true);
+
+				// 设置请求头
+				// 必须在open之后设置
+				xhr_like.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+				xhr_like.send('type=like&id='+id);
+			}
+		}
+	});
+		
+	</script>
+</head>
+<body>
+	<div class="datalist">
+		
+	</div>
+</body>
+</html>

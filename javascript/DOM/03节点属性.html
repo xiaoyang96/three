@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03节点属性</title>
+	<script>
+		window.onload = function(){
+			/*
+				nodeType：节点类型
+					* 1 元素
+					* 2 属性
+					* 3 文本
+				nodeName:节点名称
+					* 元素：标签名
+				nodeValue:获取节点的值
+					* 文本
+					* 属性
+			 */
+			
+			// 获取元素节点
+			var box = document.getElementsByClassName('box')[0];
+
+			console.log('nodeName:',box.nodeName);//
+			console.log('nodeValue:',box.nodeValue);
+
+			// 获取文本节点
+			var txt = box.childNodes[0];
+			console.log('nodeType:',txt.nodeType);
+			console.log('nodeName:',txt.nodeName);
+			console.log('nodeValue:',txt.nodeValue);
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		节点属性
+	</div>
+	<div class="box"></div>
+</body>
+</html>

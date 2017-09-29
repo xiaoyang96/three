@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01闭包</title>
+	<script>
+		function aa(){
+	        var num=10;
+	        function bb(){
+	            num++
+	            console.log(num);
+	        }
+	        
+	        return bb;
+	    }
+	    // num;// num is not defined
+	    // bb(); //无法直接访问函数内部的函数 bb is not a function
+
+	    var res = aa();
+	    res();//11
+	    res();//12
+	    res();//13
+
+
+	    aa()();//11
+	    aa()();//11
+	    aa()();//11
+
+
+	    function sum(){
+	    	var num1 = 10;
+	    	var num2 = 20;
+	    	console.log(num1 + num2);
+	    }
+	    sum();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

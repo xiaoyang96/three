@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05函数定义方式</title>
+	<script>
+	/*
+		函数声明注意事项：
+			* 避免与变量重名
+			* 声明提前
+				浏览器在逐行解析代码前，会把变量声明和函数声明事先保存起来
+				* 函数声明
+				* 变量声明（变量声明但不赋值，默认值为undefined）
+		
+		* 报错会阻止代码向下执行
+		* 浏览器解析代码步骤
+			1. 把变量声明和函数声明事先保存到内存中
+			2. 逐行执行代码
+
+		* show2 is not a function
+			* 单词写错
+			* show2不是一个函数
+	 */
+	
+		show();//成功执行
+		console.log(num);//undefined
+
+		var num = 100;//声明并赋值
+
+		// 函数定义方式1：声明式
+		function show(){
+			console.log('show函数');
+		}
+		// var show = 100;//避免与变量重名
+		// console.log(typeof show);
+
+		// show();
+		// console.log(num);
+
+
+		// 函数定义方式2：赋值式
+		// 在定义前调用：
+		// show2();//show2 is not a function
+		var show2 = function(){
+			console.log('show2');
+		}
+
+		// 在定义后调用
+		// show2();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

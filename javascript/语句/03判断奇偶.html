@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03判断奇偶</title>
+	
+</head>
+<body>
+	<input type="text" id="number"><button onclick="checkOdd()">判断奇偶</button>
+	<div id="output"></div>
+	<script>
+		// 获取页面的元素
+		var num = document.getElementById('number');
+		var output = document.getElementById('output');
+
+		function checkOdd(){
+			// 获取输入框的值
+			var _num = num.value;
+
+			// 判断奇数
+			if(_num%2===0){
+				output.innerHTML = '偶数';
+			}else{
+				output.innerHTML = '奇数';
+			}
+		}
+	</script>
+</body>
+</html>

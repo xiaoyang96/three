@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05对象扩展</title>
+	<script>
+		var person = {
+			name:'吴京',
+			age:43,
+			gender:'男'
+		}
+
+		// 赋值一个对象
+
+		// JSON
+		// var trueMan = JSON.parse(JSON.stringify(person));
+
+		// for..in
+		// var trueMan = {};
+		// for(var attr in person){
+		// 	trueMan[attr] = person[attr];
+		// }
+
+		// Object.assign(target,obj1,obj2,...);
+		var obj1 = {a:10,b:20,c:30}
+		var obj2 = {a:11,d:41};
+		Object.assign(obj1,obj2);
+		console.log(obj1);
+
+		// 实现复制效果
+		var trueMan = Object.assign({},person);
+		console.log(trueMan);
+
+
+		var gender = '女';
+
+		var student = {
+			name:'小王',
+			age:16,
+
+			// 属性简写
+			[gender]:'abc';
+			// 等效于
+			// '女': 'abc',
+
+			// 属性名为变量名, 属性值为变量的值
+			gender,
+
+			// 行为
+			coding:function(){
+
+			}
+
+			// 简写
+			// coding(){
+
+			// }
+		}
+
+		student.className = 'h5_1717';
+
+		// 如果属性名为变量，必须用方括号语法
+		student['className'] = 'h5_1717';
+		student[gender] = 'abc'
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

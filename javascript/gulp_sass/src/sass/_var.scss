@@ -1,0 +1,24 @@
+/*
+	sass变量
+	用于编写整个项目所有公共变量
+ */
+
+//边框颜色
+$borderColor:#ddd !default;
+
+// 主色调
+$mainColor:#58bc58;
+
+// 高亮颜色
+$highlight:#f60;
+
+// 字体大小
+$normalFont:16px;
+$smallFont:12px;
+$bigFont:22px;
+
+// 多值变量
+// set,map
+$pading:10px 15px 20px 25px;//使用：nth($padding,1)
+
+$headers:(h1: 2em, h2: 1.5em, h3: 1.2em);//使用：map-get($headers,h1)

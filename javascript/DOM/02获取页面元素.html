@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02获取页面元素</title>
+	<script>
+		window.onload = function(){
+			/*
+				获取元素
+				* document.getElementById()
+				* getElementsByTagName() 
+					* 返回一个类数组
+				* getElementsByClassName()
+					* 返回一个类数组
+				* document.getElementsByName()
+					* 返回一个类数组
+					* 获取表单元素
+
+				节点属性
+					* nodeType
+			 */
+			// 获取一个元素
+			// 元素节点
+			var box = document.getElementById('box');
+
+			console.log(box.nodeType);
+
+			var h1 = document.getElementsByTagName('h1');//[h1]
+			console.log(h1[0].nodeType);
+
+			var items = document.getElementsByTagName('li');
+			console.log(items);
+
+			// 改变每个.item的颜色
+			var c_items = document.getElementsByClassName('item');
+			console.log(c_items);
+			for(var i=0;i<c_items.length;i++){
+				c_items[i].style.color = '#f00';
+			}
+
+
+			// 获取商品列表
+			var goodslist = document.getElementsByClassName('goods')[0];//[ul]
+			var my_items = goodslist.getElementsByTagName('li');
+			console.log(my_items);
+
+
+		}
+	</script>
+</head>
+<body>
+	<h1>获取页面元素的方式</h1>
+	<div id="box">获取页面元素</div>
+	<div class="datalist">
+		<ul>
+			<li class="item">数据1</li>
+			<li>数据1</li>
+			<li class="item">数据2</li>
+			<li>数据2</li>
+			<li class="item">数据3</li>
+			<li>数据3</li>
+		</ul>
+	</div>
+	<ul class="goods">
+		<li class="item">goods1</li>
+		<li class="item">goods2</li>
+		<li>goods3</li>
+		<li>goods4</li>
+	</ul>
+</body>
+</html>

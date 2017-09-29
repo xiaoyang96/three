@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11ES6的继承方式</title>
+	<script>
+		/*
+			类：
+				创建一个类: class
+		 */
+		
+		class Person{
+			constructor(name,age,gender){
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+				console.log(666)
+			}
+
+
+			// 这里添加方法就是给原型对象添加方法
+			say(){
+				console.log('say hello');
+				// this
+			}
+
+		}
+
+		var p1 = new Person('貂蝉',16,'女');
+		console.log(p1);
+
+
+		class Man extends Person{
+			constructor(name,age){
+				super(name, age,'男');
+
+				// this必须要在super后才能使用
+				this.huzi = true;
+			}
+
+			// 静态方法
+			static dajia(){
+				console.log(`我是${this.name},我会打架`)
+			}
+		}
+
+		var m1 = new Man('吕布',20);
+		// m1.dajia();
+
+		// PHP Man::dajia
+		Man.dajia();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

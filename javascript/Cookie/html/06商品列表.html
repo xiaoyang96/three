@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06path的使用</title>
+	<script src="../../common.js"></script>
+	
+</head>
+<body>
+	<h1>商品列表</h1>
+	<script>
+		var username = Cookie.get('username');
+		document.write('你好，帅哥 ' + username);
+
+		// 写入cookie
+		Cookie.set('goodslist','1234个商品',null,'/');
+	</script>
+</body>
+</html>

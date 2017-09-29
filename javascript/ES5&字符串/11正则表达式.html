@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11正则表达式</title>
+	<script>
+		// 创建
+		// 字面量
+		var reg = /abc/ig;
+
+		// 构造函数
+		var reg = new RegExp('abc','gi');
+
+		// 参数
+		// * i : 忽略大小写
+		// * g : 全局匹配（匹配所有，替换所有的字符）
+
+		'Hi shit, fuck you'.replace(/shit/i,'**');
+
+
+		var str = 'shit';
+		var reg = new RegExp(str,'gi');
+		'Hi shit, fuck you str'.replace(reg,'**');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

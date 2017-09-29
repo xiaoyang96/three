@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>18函数中的this</title>
+	<script>
+	window.onload = function(){
+		// 这里的this是window
+		// console.log(this)
+
+
+		/*
+			函数
+				* arguments
+				* this
+				函数中的this是一个关键字，表示当前对象，而当前对象是谁，取决于谁调用了这个函数
+		 */
+		
+		 var myName = document.getElementById('myname');
+
+		 // 给输入框绑定一个onchange事件
+		 myName.onchange = function(){
+		 	// 在此处this就是myName输入框
+		 	console.log(this===myName);
+
+		 	// 获取输入框的值
+		 	var _myName = this.value;
+		 }
+		
+
+		function showMsg(){
+			// 这里的this指向谁
+			// 指向window
+			console.log('----------------华丽分割线---------------');
+			console.log(this);
+		}
+
+		showMsg();
+
+	}
+	</script>
+</head>
+<body>
+	<input type="text" id="myname">
+</body>
+</html>

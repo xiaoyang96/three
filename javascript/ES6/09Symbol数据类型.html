@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09Symbol数据类型</title>
+	<script>
+		/*
+			Symbole
+				* Symbole('lx') 不登记
+				* Symbole.for('lx') 创建并登记
+		 */
+		// 独一无二（唯一）
+		var attr1 = Symbol();
+		var attr2 = Symbol('a2');
+		var attr3 = Symbol('a2');
+
+		console.log(attr1,attr2);
+		console.log(attr1 == attr2);
+		console.log('attr2 == attr3:',attr2 == attr3);
+
+		var obj = {
+			title:'xxx',
+			[attr1]:'laoxie',
+		}
+		console.log(obj[attr1]);
+
+		// Symbol.for('lx')
+		var s1 = Symbol.for('s1');console.log(s1)
+		var s2 = Symbol.for('s1');console.log(s1===s2);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>五星评分</title>
+    <style type="text/css">
+    #star {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        width: 300px;
+        height: 28px;
+    }
+    
+    #star li {
+        float: left;
+        background: url(star.gif) no-repeat 0 0;
+        width: 27px;
+        height: 28px;
+    }
+    
+    #star .active{background-position:0 -29px;}
+    
+    .default {}
+    </style>
+    <script>
+    	document.addEventListener('DOMContentLoaded',function(){
+    		var star = document.querySelector('#star');
+    		var info = document.querySelector('#info');
+            var lis = star.children;
+            var currentStar = 0;
+
+    		var arr = ['差评', '不推荐', '一般', '推荐', '强力推荐'];
+
+    		// 鼠标移入高亮星星
+    		star.onmouseover = function(e){
+    			if(e.target.tagName.toLowerCase() === 'li'){
+    				var current = e.target
+                    var currentIdx;
+
+                    for(var i=0;i<lis.length;i++){
+                        if(lis[i] === current){
+                            currentIdx = i;
+                            break;
+                        }
+                    }
+
+                    for(var i=0;i<lis.length;i++){
+                        if(i<=currentIdx){
+                            lis[i].classList.add('active');
+                        }else{
+                            lis[i].classList.remove('active');
+                        }
+                    }
+    			}
+    		}
+
+            star.onmouseout = function(){
+                for(var i=0;i<lis.length;i++){
+                    if(i>currentStar){
+                        lis[i].classList.remove('active');
+                    }else{
+                        lis[i].classList.add('active');
+                    }
+                }
+            }
+
+    		// 点击li显示对应信息
+    		star.onclick = function(e){
+    			if(e.target.tagName.toLowerCase() === 'li'){
+    				for(var i=0;i<star.children.length;i++){
+    					if(e.target === star.children[i]){
+    						info.innerHTML = arr[i];
+                            currentStar = i;
+    						break;
+    					}
+    				}
+    			}
+    		}
+    	});
+    </script>
+</head>
+
+<body>
+    <ul id="star">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id="info"></div>
+</body>
+
+</html>

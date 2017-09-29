@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12判断数据类型</title>
+	<script>
+		/*
+			任何的方法都可以借用
+				*  call
+				*  apply
+		 */
+		document.addEventListener('DOMContentLoaded',function(){
+			var btns = document.getElementsByTagName('button');
+
+			Array.prototype.forEach.call(btns,function(item){
+				console.log(item)
+			})
+		})
+
+		var arr = [10,2,44,2,44,52,4,5,90,112];
+
+		console.log(Math.min.apply(null,arr));
+
+	</script>
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+</body>
+</html>
